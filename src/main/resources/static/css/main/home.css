@@ -1,0 +1,187 @@
+
+/*이미지*/
+#img {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.ibb.co/bFBLss8/mango-background.jpg');
+}
+
+.img_box{
+    background-size:cover;
+    background-position:100%;
+}
+
+#title_back{
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 80vh;
+}
+
+/*드롭다운 메뉴*/
+#dropbox_menu{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+
+}
+.nav{
+    flex-direction: row;
+    flex: 1;
+    position: relative;
+    left: 40px;
+    width:calc(100% - 40px);
+    padding: 0;
+    overflow:hidden;
+    margin: 100px 0;
+}
+.nav a{color: aliceblue;}
+.nav li{
+    width:20%;
+    text-align: center;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    line-height: 40px;
+}
+.submenu li{
+    width: 90%;
+    line-height:50px;
+}
+.submenu li a{
+    color:#24f572;
+}
+.submenu{
+    height:0px;
+    overflow: hidden;
+    transition-duration: 0.8s;
+}
+
+.nav>li:hover .submenu{
+    height:250px;
+}
+
+#dropbox_menu div {
+    box-shadow: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*검색창*/
+#form {
+    position: absolute;
+    background-color: white;
+    top: 450px;
+    left: 400px;
+    line-height: 54px;
+    margin: 45px auto 0 auto;
+    height: 50px;
+    width: 50%;
+    border: 2px solid orange;
+    border-radius: 80px;
+    overflow: hidden;
+}
+#search_icon { display: inline-block; margin-left: 40px; }
+#form > input {
+    width: 415px;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    outline: none;
+}
+#submit_btn {
+    font-family: 'twayair';
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    width: 180px;
+    height: 58px;
+    background: orange;
+    border-radius: 58px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 58px;
+}
+
+section{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/*슬라이드*/
+.swiper-container {
+    height:40%;
+    border-radius:7px;
+    padding-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.swiper-wrapper{
+    height:auto;
+}
+.swiper-slide {
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.swiper-slide img {
+    box-shadow:0 0 5px #555;
+    max-width:100%;
+}
+
+/* 칸칸이 */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, minmax(200px, auto));
+    grid-gap: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#grid>div{
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+
+/*footer*/
+footer{
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+#btm{
+    position: relative;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+#btm > div {
+    float:left;
+}
+#btm > div > div {
+    display: inline-block;
+}
+#btm > div > div::after{
+    content:"|";
+    float: right;
+    color: black;
+}
+#btm > div > div:first-child::after{
+    content: "";
+}
+#btm > div > div:last-child::after{
+    content: "";
+}
+
+#btm p{
+    flex-direction: column;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="basicLayout">
+
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    </th:block>
+
+    <th:block layout:fragment="js">
+        <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    </th:block>
+
+    <section layout:fragment="content">
+        <div id="wrap">
+            <h1>Join</h1>
+            <input type="button" value="back" id="back">
+            <div class="section">
+                <div>ID</div>
+                <input type="text" placeholder="ID" id='join_id'>
+                <button id="idCheckBtn">Check</button>
+            </div>
+            <div class="section">
+                <div>Password</div>
+                <input type="password" placeholder="Password" id="join_pwd">
+            </div>
+            <div class="section">
+                <div>Password Check</div>
+                <input type="password" placeholder="Password">
+            </div>
+            <div class="section">
+                <div>Name</div>
+                <input type="text" placeholder="Name">
+            </div>
+            <div class="section">
+                <div>Tel</div>
+                <input type="text" placeholder="tel">
+            </div>
+            <button id="joinBtn" type="button" onclick="joinControl()">
+                JOIN US!
+            </button>
+        </div>
+    </section>
+</html>

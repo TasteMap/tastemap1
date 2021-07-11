@@ -1,0 +1,26 @@
+section {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: calc(100% - 70px);
+}
+section>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: calc(100% - 80px);
+}
+
+#img{background-color: tomato;}
+#info{
+    background-color: darkcyan;
+    grid-column: 2 / 4;
+}
+#map{background-color: lavenderblush;}
+#scrap{background-color: yellow;}
+#rev{background-color: indianred;}

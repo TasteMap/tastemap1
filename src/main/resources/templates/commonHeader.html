@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<header th:fragment="header">
+    <div id="top">
+        <ul class="lan">
+            <li class="lan">
+                <a href="#" class="header_menulink"><span class="menu_text"><i class="fas fa-flag-usa"></i></span></a>
+            </li>
+            <li class="lan">
+                <a href="#" class="header_menulink"><span class="menu_text"><i class="far fa-flag"></i></span></a>
+            </li>
+        </ul>
+        <div class="logo">
+            <a th:href="@{/home}">
+            <svg width=300 height=70 viewBox="0 0 400 200">
+                <text x="-10" y="65%">대</text>
+                <text x="90" y="55%">동</text>
+                <text x="200" y="50%">맛</text>
+                <text x="300" y="55%">지</text>
+                <text x="400" y="65%">도</text>
+            </svg>
+            </a>
+        </div>
+        <ul class="header_nav">
+            <li class="header_item">
+                <a th:href="@{/user/login}" class="header_menulink"><span class="menu_text">Login</span></a>
+            </li>
+            <li class="header_item">
+                <a th:href="@{/user/join}" class="header_menulink"><span class="menu_text">Join</span></a>
+            </li>
+            <li class="header_item">
+                <a href="#" class="header_menulink"><span class="menu_text">MyPage</span></a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+</html>

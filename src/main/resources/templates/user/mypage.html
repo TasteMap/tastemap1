@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="basicLayout">
+
+  <th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+  </th:block>
+
+  <th:block layout:fragment="js">
+
+  </th:block>
+
+  <th:block layout:fragment="content">
+      <div>
+        <div id="img">profile image</div>
+        <div id="info">personal info</div>
+        <div id="map">map</div>
+        <div id="scrap">scrap</div>
+        <div id="rev">reservation</div>
+      </div>
+  </th:block>
+</html>

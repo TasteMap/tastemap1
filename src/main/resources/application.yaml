@@ -1,0 +1,34 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username : daedongmatjido@gmail.com
+    password : koreait21
+    properties :
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:templates/
+    suffix: .html
+    mode: HTML
+    cache: false
+  datasource:
+    url: jdbc:mysql://localhost:3308/tastemap
+    username: root
+    password: koreait
+    driver-class-name: org.mariadb.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 30MB
+      location: C:/springImg
+mybatis:
+  mapper-locations: mybatis-mapper/**/*.xml
+  type-aliases-package: com.heeju.tastemap
+#주석 - 톰캣 포트 변경
+server:
+  port: 8090
