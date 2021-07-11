@@ -1,4 +1,4 @@
-package com.heeju.tastemap;
+package com.daedong.tastemap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

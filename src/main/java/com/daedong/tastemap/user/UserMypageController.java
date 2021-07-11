@@ -1,4 +1,4 @@
-package com.heeju.tastemap.user;
+package com.daedong.tastemap.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

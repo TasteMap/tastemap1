@@ -1,4 +1,4 @@
-package com.heeju.tastemap;
+package com.daedong.tastemap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
