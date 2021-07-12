@@ -28,7 +28,7 @@ spring:
       location: C:/springImg
 mybatis:
   mapper-locations: mybatis-mapper/**/*.xml
-  type-aliases-package: com.heeju.tastemap
+  type-aliases-package: com.daedong.tastemap
 #주석 - 톰캣 포트 변경
 server:
   port: 8090

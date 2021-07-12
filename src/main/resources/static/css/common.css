@@ -54,19 +54,6 @@ a {
   background: linear-gradient(to left, #ff4d2e, #ff9b2f);
 }
 
-.lan {
-  display: -webkit-flex;
-  -webkit-flex-direction: row;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  height: 100%;
-  margin-left: 15px;
-  color: white;
-}
-
-.lan:nth-child(2) {
-  padding-left: 20px;
-}
 
 .logo {
   position: absolute;

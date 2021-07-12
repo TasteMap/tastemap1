@@ -6,14 +6,6 @@
 
 <header th:fragment="header">
     <div id="top">
-        <ul class="lan">
-            <li class="lan">
-                <a href="#" class="header_menulink"><span class="menu_text"><i class="fas fa-flag-usa"></i></span></a>
-            </li>
-            <li class="lan">
-                <a href="#" class="header_menulink"><span class="menu_text"><i class="far fa-flag"></i></span></a>
-            </li>
-        </ul>
         <div class="logo">
             <a th:href="@{/home}">
             <svg width=300 height=70 viewBox="0 0 400 200">
@@ -29,6 +21,7 @@
             <li class="header_item">
                 <a th:href="@{/user/login}" class="header_menulink"><span class="menu_text">Login</span></a>
             </li>
+
             <li class="header_item">
                 <a th:href="@{/user/join}" class="header_menulink"><span class="menu_text">Join</span></a>
             </li>
@@ -38,5 +31,4 @@
         </ul>
     </div>
 </header>
-
 </html>
