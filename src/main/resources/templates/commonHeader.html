@@ -18,13 +18,13 @@
             </a>
         </div>
         <ul class="header_nav">
-            <li class="header_item">
+            <li class="header_item" sec:authorize="isAnonymous()">
                 <a th:href="@{/user/login}" class="header_menulink"><span class="menu_text">Login</span></a>
             </li>
-            <li class="header_item">
+            <li class="header_item"  sec:authorize="isAnonymous()">
                 <a th:href="@{/user/join}" class="header_menulink"><span class="menu_text">Join</span></a>
             </li>
-            <li class="header_item">
+            <li class="header_item"  sec:authorize="isAuthenticated()">
                 <a href="#" class="header_menulink"><span class="menu_text">MyPage</span></a>
             </li>
         </ul>
