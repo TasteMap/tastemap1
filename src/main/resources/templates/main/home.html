@@ -7,136 +7,77 @@
     <th:block layout:fragment="css">
         <link rel="stylesheet" th:href="@{/css/main/home.css}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </th:block>
 
     <th:block layout:fragment="js">
         <script defer th:src="@{/js/main/home.js}"></script>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://cdn.sobekrepository.org/includes/jquery-rotate/2.2/jquery-rotate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
     </th:block>
 
     <th:block layout:fragment="content">
+        <!--오늘뭐먹지 & 이미지-->
         <div id="wrap">
             <div id="title_back">
-                <div id="img" class="img_box"></div>
+                <div id="img" class="img_box">
+                    <div id="today"><img class="taste" src="img/taste.png"></div>
+                </div>
             </div>
         </div>
 
-        <!--드롭다운 메뉴-->
-        <div id="dropbox_menu">
-            <ul class="nav">
-                <li>
-                    <a href="#">Location</a>
-                    <ul class="submenu">
-                        <li><a href="#">Seoul</a></li>
-                        <li><a href="#">Busan</a></li>
-                        <li><a href="#">Daegu</a></li>
-                        <li><a href="#">Gyeoungju</a></li>
-                        <li><a href="#">Jeju Isalnd</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Price</a>
-                    <ul class="submenu">
-                        <li><a href="#">~10,000</a></li>
-                        <li><a href="#">~20,000</a></li>
-                        <li><a href="#">~30,000</a></li>
-                        <li><a href="#">~40,000</a></li>
-                        <li><a href="#">~50,000</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Food</a>
-                    <ul class="submenu">
-                        <li><a href="#">Korean</a></li>
-                        <li><a href="#">Japanese</a></li>
-                        <li><a href="#">Chinese</a></li>
-                        <li><a href="#">Italian</a></li>
-                        <li><a href="#">Etc</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">With</a>
-                    <ul class="submenu">
-                        <li><a href="#">Friend</a></li>
-                        <li><a href="#">Date</a></li>
-                        <li><a href="#">Family</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Etc</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Recommendation</a>
-                    <ul class="submenu">
-                        <li><a href="#">Review</a></li>
-                        <li><a href="#">Rate</a></li>
-                        <li><a href="#">Search</a></li>
-                        <li><a href="#">Local</a></li>
-                        <li><a href="#">Etc</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <!--룰렛-->
+        <div class="bg"></div>
+        <div id="rl">
+            <button class="close_btn"><i class="fas fa-times"></i></button>
+            <div id="title">rolling in the dip</div>
+            <div class="title_gradcircle"></div>
 
-        <!--검색창-->
-        <div id="form">
-            <div id="search_icon">
-                <i class="fas fa-search-location"></i></div>
-            <input type="text" placeholder="Location, Restaurant or Food">
-            <div id="submit_btn">검색</div>
-            <div id="search_menu"></div>
+            <div class="box-roulette">
+                <div class="markers"></div>
+                <button type="button" id="btn-start">
+                    <span>r</span>
+                    <span>o</span>
+                    <span>u</span>
+                    <span>l</span>
+                    <span>e</span>
+                    <span>t</span>
+                    <span>t</span>
+                    <span>e</span>
+                </button>
+                <div class="roulette" id="roulette"></div>
+            </div>
         </div>
-
 
         <section>
-            <!-- 슬라이드 -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0266.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0373.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0737.jpg"></div>
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0476.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0586.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0128.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0636.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0294.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0260.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0693.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0283.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0701.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0219.jpg"></div>
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0052.jpg"></div>
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0337.jpg"></div>
-                </div>
-
-                <!-- 네비게이션 -->
-                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-
-                <!-- 페이징 -->
-                <div class="swiper-pagination"></div>
-            </div>
+            <!--지도-->
+            <div id="map"></div>
 
             <!-- 칸칸이 -->
             <div id="grid">
-                <div class="box1">1</div>
-                <div class="box2">2</div>
-                <div class="box3">3</div>
-                <div class="box4">4</div>
-                <div class="box5">5</div>
-                <div class="box6">6</div>
-                <div class="box7">7</div>
-                <div class="box8">8</div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
             </div>
 
+            <!-- 슬라이드 -->
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0266.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0373.jpg"></div>
-                    <div class="swiper-slide"><img src="https://ktsmemo.cafe24.com/p/0737.jpg"></div>
-                    <div class="swiper-slide"><img src="http://oldmidi.cdn3.cafe24.com/p/0476.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0586.jpg"></div>
-                    <div class="swiper-slide"><img src="http://ktsmemo.cdn3.cafe24.com/p/0128.jpg"></div>
+                    <div class="swiper-slide"><img src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"></div>
+                    <div class="swiper-slide"><img src="https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"></div>
+                    <div class="swiper-slide"><img src="https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"></div>
+                    <div class="swiper-slide"><img src="https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"></div>
+                    <div class="swiper-slide"><img src="https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"></div>
+                    <div class="swiper-slide"><img src="https://media.timeout.com/images/103262962/1024/576/image.jpg"></div>
                 </div>
 
                 <!-- 네비게이션 -->
@@ -146,7 +87,6 @@
                 <!-- 페이징 -->
                 <div class="swiper-pagination"></div>
             </div>
-
         </section>
 
         <footer>
