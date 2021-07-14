@@ -4,102 +4,124 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="basicLayout">
 
-    <th:block layout:fragment="css">
-        <link rel="stylesheet" th:href="@{/css/main/home.css}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    </th:block>
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/main/home.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</th:block>
 
-    <th:block layout:fragment="js">
-        <script defer th:src="@{/js/main/home.js}"></script>
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="https://cdn.sobekrepository.org/includes/jquery-rotate/2.2/jquery-rotate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
-    </th:block>
+<th:block layout:fragment="js">
+    <script defer th:src="@{/js/main/home.js}"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdn.sobekrepository.org/includes/jquery-rotate/2.2/jquery-rotate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adc819469adfb0a77758f477958aa1cf&libraries=services"></script>
+</th:block>
 
-    <th:block layout:fragment="content">
-        <!--오늘뭐먹지 & 이미지-->
-        <div id="wrap">
-            <div id="title_back">
-                <div id="img" class="img_box">
-                    <div id="today"><img class="taste" src="img/taste.png"></div>
+<th:block layout:fragment="content">
+    <!--오늘뭐먹지 & 이미지-->
+    <div id="wrap">
+        <div id="title_back">
+            <div id="img" class="img_box">
+                <div id="today"><img class="taste" src="img/taste.png"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--룰렛-->
+    <div class="bg"></div>
+    <div id="rl">
+        <button class="close_btn"><i class="fas fa-times"></i></button>
+        <div id="title">rolling in the dip</div>
+        <div class="title_gradcircle"></div>
+
+        <div class="box-roulette">
+            <div class="markers"></div>
+            <button type="button" id="btn-start">
+                <span>r</span>
+                <span>o</span>
+                <span>u</span>
+                <span>l</span>
+                <span>e</span>
+                <span>t</span>
+                <span>t</span>
+                <span>e</span>
+            </button>
+            <div class="roulette" id="roulette"></div>
+        </div>
+    </div>
+
+    <section>
+        <!--지도-->
+        <h1>SearchMAP_API</h1>
+        <button id="fadeToggleBtn">Click! 전국 맛집 검색</button>
+        <div id="divBox">
+            <br>
+            <div class="map_wrap">
+                <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+
+                <div id="menu_wrap" class="bg_white">
+                    <div class="option">
+                        <div>
+                            <form onsubmit="searchPlaces(); return false;">
+                                키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+                                <button type="submit">검색하기</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
                 </div>
             </div>
         </div>
 
-        <!--룰렛-->
-        <div class="bg"></div>
-        <div id="rl">
-            <button class="close_btn"><i class="fas fa-times"></i></button>
-            <div id="title">rolling in the dip</div>
-            <div class="title_gradcircle"></div>
-
-            <div class="box-roulette">
-                <div class="markers"></div>
-                <button type="button" id="btn-start">
-                    <span>r</span>
-                    <span>o</span>
-                    <span>u</span>
-                    <span>l</span>
-                    <span>e</span>
-                    <span>t</span>
-                    <span>t</span>
-                    <span>e</span>
-                </button>
-                <div class="roulette" id="roulette"></div>
-            </div>
+        <!-- 칸칸이 -->
+        <div id="grid">
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
         </div>
 
-        <section>
-            <!--지도-->
-            <div id="map"></div>
-
-            <!-- 칸칸이 -->
-            <div id="grid">
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-                <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+        <!-- 슬라이드 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"></div>
+                <div class="swiper-slide"><img src="https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"></div>
+                <div class="swiper-slide"><img src="https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"></div>
+                <div class="swiper-slide"><img src="https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"></div>
+                <div class="swiper-slide"><img src="https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"></div>
+                <div class="swiper-slide"><img src="https://media.timeout.com/images/103262962/1024/576/image.jpg"></div>
             </div>
 
-            <!-- 슬라이드 -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"></div>
-                    <div class="swiper-slide"><img src="https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"></div>
-                    <div class="swiper-slide"><img src="https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"></div>
-                    <div class="swiper-slide"><img src="https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"></div>
-                    <div class="swiper-slide"><img src="https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"></div>
-                    <div class="swiper-slide"><img src="https://media.timeout.com/images/103262962/1024/576/image.jpg"></div>
-                </div>
+            <!-- 네비게이션 -->
+            <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+            <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 
-                <!-- 네비게이션 -->
-                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
 
-                <!-- 페이징 -->
-                <div class="swiper-pagination"></div>
+    <footer>
+        <div id="btm">
+            <div>
+                <div><h1>대동맛지도</h1></div>
+                <div>개인정보처리방침</div>
+                <div>위치기반 서비스</div>
+                <div>이용약관</div>
             </div>
-        </section>
-
-        <footer>
-            <div id="btm">
-                <div>
-                    <div><h1>대동맛지도</h1></div>
-                    <div>개인정보처리방침</div>
-                    <div>위치기반 서비스</div>
-                    <div>이용약관</div>
-                </div>
-                <p>상호: (주)맛잘알 사업장 소재지: 쩝쩝박사 경기도 판교818 20층</p>
-                <p>e-mail: dishis@tastemap.com, Tel: 080-818-0088</p>
-            </div>
-        </footer>
-    </th:block>
+            <p>상호: (주)맛잘알 사업장 소재지: 쩝쩝박사 경기도 판교818 20층</p>
+            <p>e-mail: dishis@tastemap.com, Tel: 080-818-0088</p>
+        </div>
+    </footer>
+</th:block>
 </html>

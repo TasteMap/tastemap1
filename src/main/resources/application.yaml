@@ -26,6 +26,11 @@ spring:
       max-file-size: 5MB
       max-request-size: 30MB
       location: C:/springImg
+  devtools:
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
 mybatis:
   mapper-locations: mybatis-mapper/**/*.xml
   type-aliases-package: com.daedong.tastemap
