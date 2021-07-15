@@ -39,7 +39,7 @@
 .bg{
     display: none;
     position: fixed;
-    top: 0;
+    top: 0%;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -50,10 +50,10 @@
 #rl {
     display: none;
     position: fixed;
-    top: 3%;
+    top: 5%;
     left: 25%;
     width: 50%;
-    height: 80%;
+    height: 90%;
     padding-bottom: 100px;
     border-radius: 5%;
     background-color: rgb(238, 230, 211);
@@ -155,11 +155,11 @@ button{border:0;margin:0;padding:0;}
 
 /* 검색지도 */
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'twayair';font-size:1rem;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
+.bg_white {background:rgb(238, 230, 211);}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
 #menu_wrap .option p {margin:10px 0;}
@@ -194,15 +194,15 @@ button{border:0;margin:0;padding:0;}
 
 #fadeToggleBtn {
     box-shadow:inset 0px 1px 0px 0px #f9eca0;
-    background:linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
-    background-color:#f0c911;
+    background:linear-gradient(to bottom, #FFDB5C 5%, #F9A603 100%);
+    background-color:#F9ba3e;
     border-radius:6px;
-    border:1px solid #e65f44;
+    /* box-shadow: inset 5em 1em #F8A055; */
     display:inline-block;
     cursor:pointer;
-    color:#c92200;
-    font-family:Arial;
-    font-size:15px;
+    color: #426e86;
+    font-family:'twayair';
+    font-size:2rem;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;
@@ -219,26 +219,19 @@ button{border:0;margin:0;padding:0;}
     top:1px;
 }
 
-.option{
-    width: 100%;
-    height: 20%;
-}
 .search{
-    padding-top: 5%;
-    position: relative;
-    background-color: aliceblue;
-    width: 100%;
-    height: 80%;
-}
-
-.search #keyword{
     padding-top: 2%;
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+.search #keyword{
     position: absolute;
     top: 40%;
     left: 2%;
     border-radius: 0.5rem;
     width: 95%;
-    height: 35%;
+    height: 52%;
     justify-content: center;
     align-items: center;
 }
@@ -246,10 +239,11 @@ button{border:0;margin:0;padding:0;}
     position: absolute;
     border-radius: 0.5rem;
     width: 25%;
-    height: 42%;
-    top: 41%;
-    right: 2%;
+    height: 43%;
+    top: 45%;
+    right: 3%;
     background-color: #F2c057;
+    border: 1px solid #F2c057;
 }
 
 /*칸칸이*/
@@ -265,6 +259,7 @@ button{border:0;margin:0;padding:0;}
 }
 section{margin: 40px; height: auto;}
 #grid>div{
+    box-shadow: 5px 5px rgba(0,0,0,0,4);
     width: 100%;
     height: 100%;
     background-color: aliceblue;
@@ -317,8 +312,8 @@ section{margin: 40px; height: auto;}
 }
 
 .swiper-slide:first-child{background-image: url("https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"); background-size: cover;}
-.swiper-slide:nth-child(2){background-image: url("https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"); background-size: cover;}
-.swiper-slide:nth-child(3){background-image: url("https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"); background-size: cover;}
+.swiper-slide:nth-child(2){background-image: url("https://www.dolomiticlass.it/storage/property/services/513/conversions/Piatto_gourmet_My_Arbor_Hotel_Bressanone_01-desktop.jpg"); background-size: cover;}
+.swiper-slide:nth-child(3){background-image: url("https://rachelgouk.com/wp-content/uploads/2019/07/sushi-naoki-japanese-restaurant-shanghai.jpg"); background-size: cover;}
 .swiper-slide:nth-child(4){background-image: url("https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"); background-size: cover;}
 .swiper-slide:nth-child(5){background-image: url("https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"); background-size: cover;}
 .swiper-slide:last-child{background-image: url("https://media.timeout.com/images/103262962/1024/576/image.jpg"); background-size: cover;}
