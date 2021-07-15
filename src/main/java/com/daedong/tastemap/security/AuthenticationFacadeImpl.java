@@ -22,3 +22,4 @@ public class AuthenticationFacadeImpl implements IAuthenticationFacade {
         return getLoginUser().getIuser();
     }
 }
+

@@ -21,7 +21,6 @@
         SELECT *
         FROM t_user
         WHERE email = #{email} AND authCd IS NULL
-
     </select>
 
 

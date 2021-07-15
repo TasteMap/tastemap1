@@ -19,18 +19,18 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3308/tastemap
     username: root
-    password: koreait
+    password: 1529
     driver-class-name: org.mariadb.jdbc.Driver
-  servlet:
-    multipart:
-      max-file-size: 5MB
-      max-request-size: 30MB
-      location: C:/springImg
   devtools:
     livereload:
       enabled: true
   freemarker:
     cache: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 30MB
+      location: C:/springImg
 mybatis:
   mapper-locations: mybatis-mapper/**/*.xml
   type-aliases-package: com.daedong.tastemap

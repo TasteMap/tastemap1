@@ -25,3 +25,4 @@ public class UserDetailServiceImpl implements UserDetailsService{
         return new UserDetailsImpl(loginUser);//로그인 성공상태는 아닌데 아이디는 있는상태
     }
 }
+

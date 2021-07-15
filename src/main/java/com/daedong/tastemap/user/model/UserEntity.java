@@ -13,3 +13,4 @@ public class UserEntity {
     private String regdt;
     private String mainProfile;
 }
+

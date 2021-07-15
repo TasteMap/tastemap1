@@ -12,6 +12,7 @@
 
 <th:block layout:fragment="js">
     <script defer th:src="@{/js/main/home.js}"></script>
+    <script defer th:src="@{/js/common.js}"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -22,6 +23,35 @@
 </th:block>
 
 <th:block layout:fragment="content">
+    <div class="login-container hidden">
+        <div class="login">
+            <h1>Log-in</h1>
+            <div class="login_sns">
+                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href=""><i class="fab fa-google"></i></a></li>
+            </div>
+            <div class="login_id">
+                <h4>ID</h4>
+                <input type="email" name="" id="" placeholder="ID">
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <input type="password" name="" id="" placeholder="Password">
+            </div>
+            <div class="login_etc">
+                <div class="checkbox">
+                    <input type="checkbox" name="" id=""> Remember ID?
+                </div>
+                <div class="join">
+                    <a href="">Join</a>
+                </div>
+            </div>
+            <div class="submit">
+                <input type="submit" value="submit">
+            </div>
+        </div>
+    </div>
     <!--오늘뭐먹지 & 이미지-->
     <div id="wrap">
         <div id="title_back">
@@ -81,25 +111,25 @@
 
         <!-- 칸칸이 -->
         <div id="grid">
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box">중구</div>
+            <div class="box">수성구</div>
+            <div class="box">동구</div>
+            <div class="box">서구</div>
+            <div class="box">남구</div>
+            <div class="box">북구</div>
+            <div class="box">달성구</div>
+            <div class="box">달성군</div>
         </div>
 
         <!-- 슬라이드 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"></div>
-                <div class="swiper-slide"><img src="https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"></div>
-                <div class="swiper-slide"><img src="https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"></div>
-                <div class="swiper-slide"><img src="https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"></div>
-                <div class="swiper-slide"><img src="https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"></div>
-                <div class="swiper-slide"><img src="https://media.timeout.com/images/103262962/1024/576/image.jpg"></div>
+                <div class="swiper-slide">한식</div>
+                <div class="swiper-slide">양식</div>
+                <div class="swiper-slide">일식</div>
+                <div class="swiper-slide">중식</div>
+                <div class="swiper-slide">동남아식</div>
+                <div class="swiper-slide">분식</div>
             </div>
 
             <!-- 네비게이션 -->
