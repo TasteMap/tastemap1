@@ -22,10 +22,11 @@
                 <div class="header_menulink"><span id="loginModal" class="menu_text">Login</span></div>
             </li>
             <li class="header_item" sec:authorize="isAnonymous()">
-                <a th:href="@{/user/join}" class="header_menulink"><span class="menu_text">Join</span></a>
+                <div class="header_menulink"><span id="joinModal" class="menu_text">Join</span></div>
             </li>
             <li class="header_item" sec:authorize="isAuthenticated()">
                 <a th:href="@{/user/mypage}"  class="header_menulink"><span class="menu_text">MyPage</span></a>
+                <a th:href="@{/user/logout}">로그아웃</a>
             </li>
         </ul>
     </div>

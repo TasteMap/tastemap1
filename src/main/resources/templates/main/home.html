@@ -23,8 +23,9 @@
 </th:block>
 
 <th:block layout:fragment="content">
-    <div class="login-container hidden">
-        <div class="login">
+    <div class="bg"></div>
+    <div id="login">
+        <form>
             <h1>Log-in</h1>
             <div class="login_sns">
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
@@ -39,18 +40,39 @@
                 <h4>Password</h4>
                 <input type="password" name="" id="" placeholder="Password">
             </div>
-            <div class="login_etc">
-                <div class="checkbox">
-                    <input type="checkbox" name="" id=""> Remember ID?
-                </div>
-                <div class="join">
-                    <a href="">Join</a>
-                </div>
-            </div>
             <div class="submit">
                 <input type="submit" value="submit">
             </div>
-        </div>
+        </form>
+    </div>
+    <div id="join">
+        <form>
+            <h1>Join</h1>
+            <div class="section">
+                <div>ID</div>
+                <input type="text" placeholder="ID" id='join_id'>
+                <button id="idCheckBtn">Check</button>
+            </div>
+            <div class="section">
+                <div>Password</div>
+                <input type="password" placeholder="Password" id="join_pwd">
+            </div>
+            <div class="section">
+                <div>Password Check</div>
+                <input type="password" placeholder="Password">
+            </div>
+            <div class="section">
+                <div>Name</div>
+                <input type="text" placeholder="Name">
+            </div>
+            <div class="section">
+                <div>Tel</div>
+                <input type="text" placeholder="tel">
+            </div>
+            <button id="joinBtn" type="button" onclick="joinControl()">
+                JOIN US!
+            </button>
+        </form>
     </div>
     <!--오늘뭐먹지 & 이미지-->
     <div id="wrap">
