@@ -9,7 +9,7 @@ new Swiper('.swiper-container', {
     // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
     loopFillGroupWithBlank : true,
 
-    loop : true, // 무한 반복
+    // 무한 반복 loop : true,
 
     pagination : { // 페이징
         el : '.swiper-pagination',
@@ -183,10 +183,10 @@ function searchPlaces() {
 
     var keyword = document.getElementById('keyword').value;
 
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
-        return false;
-    }
+    // if (!keyword.replace(/^\s+|\s+$/g, '')) {
+    //     alert('키워드를 입력해주세요!');
+    //     return false;
+    // }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB);

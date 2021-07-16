@@ -280,6 +280,7 @@ section{margin: 40px; height: auto;}
     font-family: 'twaysky';
     font-size: 3rem;
     color: rgb(231, 172, 61);
+    text-shadow: 2px 4px 2px gray;
 }
 
 .box:first-child { background-image: url("https://img.hankyung.com/photo/202010/01.24004143.1.jpg"); background-size: cover; }
@@ -289,7 +290,7 @@ section{margin: 40px; height: auto;}
 .box:nth-child(5) { background-image: url("https://i0.wp.com/blog.allstay.com/wp-content/uploads/2019/06/photo01-1.jpg?w=760&ssl=1"); background-size: cover; }
 .box:nth-child(6) { background-image: url("https://www.newgbnews.com/news/photo/202103/227389_34647_1314.jpg"); background-size: cover; }
 .box:nth-child(7) { background-image: url("http://ojsfile.ohmynews.com/STD_IMG_FILE/2017/0226/IE002116276_STD.jpg"); background-size: cover; }
-.box:last-child { background-image: url("http://www.daeguview.com/DATA/photo/thumb_b_2018_02_26.jpg"); background-size: cover; }
+.box:last-child { background-image: url("http://www.daeguview.com/DATA/photo/thumb_b_20190909051030.jpg"); background-size: cover; }
 
 /*슬라이드*/
 .swiper-container {
@@ -309,6 +310,7 @@ section{margin: 40px; height: auto;}
     font-family: 'twaysky';
     font-size: 3rem;
     color: tomato;
+    text-shadow: 2px 4px 2px gray;
 }
 
 .swiper-slide:first-child{background-image: url("https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"); background-size: cover;}
@@ -316,7 +318,7 @@ section{margin: 40px; height: auto;}
 .swiper-slide:nth-child(3){background-image: url("https://rachelgouk.com/wp-content/uploads/2019/07/sushi-naoki-japanese-restaurant-shanghai.jpg"); background-size: cover;}
 .swiper-slide:nth-child(4){background-image: url("https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"); background-size: cover;}
 .swiper-slide:nth-child(5){background-image: url("https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"); background-size: cover;}
-.swiper-slide:last-child{background-image: url("https://media.timeout.com/images/103262962/1024/576/image.jpg"); background-size: cover;}
+.swiper-slide:last-child{background-image: url("https://livingnomads.com/wp-content/uploads/2018/08/03/Street-Food-Stall-in-seoul.jpg"); background-size: cover;}
 
 .swiper-slide img {
     box-shadow:0 0 5px #555;

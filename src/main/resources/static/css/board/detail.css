@@ -11,13 +11,13 @@
     font-weight: normal;
     font-style: normal;
 }
-
 li{list-style: none;}
 a{text-decoration: none;}
 
+
 section{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-row: 1fr 1fr;
     gap: 5%;
     align-items: center;
@@ -31,25 +31,46 @@ section > div{
     width: calc(100% - 10px);
     height: calc(100% - 10px);
 }
-
-#img{background-color: tomato;
-    height: 70%;
-    width: 65%;
-    position: relative;
-    left: 10%;
-    border-radius: 70%;
-    padding-left: 5%;
-    grid-row: 1fr 1fr;
-
-}
-#info{
+section > fas-fa-star{color: yellow;}
+#img{background-color: tomato;}
+#res{
     background-color: darkcyan;
-    grid-column: 2 / 4;
-    height: 70%;
+    grid-column: 2/4;
 }
-#map{background-color: lavenderblush;
-    height: 70%;}
-#scrap{background-color: yellow;
-    height: 70%;}
-#rev{background-color: indianred;
-    height: 70%;}
+#res .title{
+    background-color: beige;
+    height: 10%;}
+#res .menu{
+    background-color: burlywood;
+    height: 80%;
+}
+#btn{
+    float: right;
+    margin-right: 10px;}
+
+#rate{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: antiquewhite;
+    text-align: center;}
+
+#rate .star{
+    padding-top: 10px;
+    background-color: thistle;
+}
+
+#rate .number{
+    background-color: rosybrown;}
+
+#rate .cmt{
+    background-color: seagreen;}
+
+#map{background-color: lavenderblush;}
+
+#rv{
+    background-color: indianred;
+    grid-column: 2 / 4;
+}
+#text{
+    background-color: cadetblue;
+}

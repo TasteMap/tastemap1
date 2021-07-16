@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@font-face {/*티웨이하늘-제목*/
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {/*티웨이항공-내용*/
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#dropbox_menu{width: 100%;}
+.nav{
+    flex-direction: row;
+    flex: 1;
+    width:calc(100% - 40px);
+    padding: 0;
+    overflow:hidden;
+}
+.nav a{
+    font-family: 'twaysky';
+    color: aliceblue;
+}
+.nav li{
+    width:20%;
+    text-align: center;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    line-height: 40px;
+}
+.submenu li{
+    width: 90%;
+    padding-left: 5%;
+    line-height:50px;
+}
+.submenu li a{
+    font-family: 'twayair';
+    text-align: center;
+    color:#24f572;
+}
+.submenu{
+    height:0px;
+    overflow: hidden;
+    transition-duration: 1.2s;
+}
+
+.nav>li:first-child:hover .submenu{
+    height:400px;
+}
+.nav>li:nth-child(2):hover .submenu{
+    height:320px;
+}
+.nav>li:last-child:hover .submenu{
+    height:280px;
+}
+
+#dropbox_menu div {
+    box-shadow: inherit;
+    margin: 0;
+    padding: 0;
+}
+section{
+    display: grid;
+    grid-template-columns: 0.5fr;
+    grid-template-rows: repeat(3, 0.5fr);
+    gap: 2%;
+    width: 90%;
+    height: calc(100% - 80px);
+    margin: 20px auto 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+#content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr;
+    width: 100%;
+    height: calc(100% - 5px);
+}
+.img{
+    grid-row: 1 / 3;
+    background-color: tomato;
+    width: 100%;
+    height: auto;
+}
+.title{
+    background-color: darkcyan;
+    width: auto;
+}
+.menu{
+    background-color: lavenderblush;
+    width: auto;
+}

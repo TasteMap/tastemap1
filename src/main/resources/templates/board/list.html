@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="basicLayout">
+
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/board/list.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </th:block>
+
+    <th:block layout:fragment="js">
+        <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+        <script defer th:src="@{/js/common.js}"></script>
+    </th:block>
+
+    <th:block layout:fragment="content">
+        <header>
+            <div id="dropbox_menu">
+                <ul class="nav">
+                    <li>
+                        <a href="#" id="dst">구/군별</a>
+                        <ul class="submenu">
+                            <li><a href="#">중구</a></li>
+                            <li><a href="#">수성구</a></li>
+                            <li><a href="#">동구</a></li>
+                            <li><a href="#">서구</a></li>
+                            <li><a href="#">남구</a></li>
+                            <li><a href="#">북구</a></li>
+                            <li><a href="#">달서구</a></li>
+                            <li><a href="#">달성군</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">음식별</a>
+                        <ul class="submenu">
+                            <li><a href="#">한식</a></li>
+                            <li><a href="#">양식</a></li>
+                            <li><a href="#">일식</a></li>
+                            <li><a href="#">중식</a></li>
+                            <li><a href="#">동남아식</a></li>
+                            <li><a href="#">분식</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">추천별</a>
+                        <ul class="submenu">
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i></a></li>
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></a></li>
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></a></li>
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i></a></li>
+                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </header>
+            <section>
+                <div id="content">
+                    <div class="img">1</div>
+                    <div class="title">2</div>
+                    <div class="menu">3</div>
+                </div>
+                <div id="content">
+                    <div class="img">1</div>
+                    <div class="title">2</div>
+                    <div class="menu">3</div>
+                </div>
+                <div id="content">
+                    <div class="img">1</div>
+                    <div class="title">2</div>
+                    <div class="menu">3</div>
+                </div>
+            </section>
+    </th:block>

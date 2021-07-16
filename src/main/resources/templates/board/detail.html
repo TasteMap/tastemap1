@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="basicLayout">
+
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/board/list.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</th:block>
+
+<th:block layout:fragment="js">
+  <script defer th:src="@{/js/common.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <section>
+      <div id="img">restaurant image</div>
+      <div id="res">
+        <div class="title">title</div>
+        <div class="menu">menu</div>
+        <button id="btn" value="예약하기"><input type="date"></button>
+      </div>
+      <div id="rate">
+        <div class="star"><i class="fas fa-star"></i></div>
+        <div class="number">number</div>
+        <div class="cmt">comment</div>
+      </div>
+
+      <div id="map">map</div>
+      <div id="rv">content</div>
+      <div id="text">
+        <input type="text" height="50" width="30" placeholder="내용을 입력해주세요">
+        <input type="button" value="작성">
+      </div>
+      </div>
+    </section>
+</th:block>
