@@ -14,10 +14,6 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/join")
-    public String join(){
-        return "user/join";
-    }
 
     @PostMapping("/join")
     public String joinProc(UserEntity userEntity){

@@ -158,7 +158,17 @@ text:nth-child(7) {
 }
 
 
+/*login*/
 
+#loginModal{
+    cursor: pointer;
+}
+
+/* Join */
+
+#joinModal{
+    cursor: pointer;
+}
 
 
 
