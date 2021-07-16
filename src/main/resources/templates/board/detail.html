@@ -5,34 +5,43 @@
       layout:decorator="basicLayout">
 
 <th:block layout:fragment="css">
-  <link rel="stylesheet" th:href="@{/css/board/list.css}">
+  <link rel="stylesheet" th:href="@{/css/board/detail.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css"/>
 </th:block>
 
 <th:block layout:fragment="js">
   <script defer th:src="@{/js/common.js}"></script>
+  <script defer th:src="@{/js/detail.js}"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </th:block>
 
 <th:block layout:fragment="content">
-    <section>
-      <div id="img">restaurant image</div>
-      <div id="res">
-        <div class="title">title</div>
-        <div class="menu">menu</div>
-        <button id="btn" value="예약하기"><input type="date"></button>
-      </div>
-      <div id="rate">
-        <div class="star"><i class="fas fa-star"></i></div>
-        <div class="number">number</div>
-        <div class="cmt">comment</div>
-      </div>
+  <section>
+    <div id="img">restaurant image</div>
 
-      <div id="map">map</div>
-      <div id="rv">content</div>
-      <div id="text">
-        <input type="text" height="50" width="30" placeholder="내용을 입력해주세요">
-        <input type="button" value="작성">
-      </div>
-      </div>
-    </section>
+    <div id="res">
+      <div class="title">title</div>
+      <div class="menu">menu</div>
+      <form id="rsv" method="post" action="">
+        인원 수 : <input type="number" min="1" max="5">
+        <input type="text" id="datepicker">
+        <input type="submit" value="예약하기">
+      </form>
+    </div>
+
+    <div id="rate">
+      <div class="star"><i class="fas fa-star"></i></div>
+      <div class="number">number</div>
+      <div class="count">how many</div>
+    </div>
+
+    <div id="map">map</div>
+    <div id="rv">content</div>
+    <div id="text">
+      <input type="text" height="50" width="30" placeholder="내용을 입력해주세요">
+      <input type="button" value="작성">
+    </div>
+  </section>
 </th:block>

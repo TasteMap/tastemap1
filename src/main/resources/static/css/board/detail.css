@@ -14,11 +14,10 @@
 li{list-style: none;}
 a{text-decoration: none;}
 
-
 section{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-row: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
     gap: 5%;
     align-items: center;
     justify-content: center;
@@ -31,23 +30,30 @@ section > div{
     width: calc(100% - 10px);
     height: calc(100% - 10px);
 }
-section > fas-fa-star{color: yellow;}
-#img{background-color: tomato;}
+section > fa-star{color: yellow;}
+#img{
+    background-color: tomato;
+    height: 70%;
+}
 #res{
     background-color: darkcyan;
     grid-column: 2/4;
+    height: 70%;
+    width: 100%;
 }
 #res .title{
     background-color: beige;
-    height: 10%;}
+    height: 20%;
+}
+
 #res .menu{
     background-color: burlywood;
-    height: 80%;
+    height: 60%;
 }
-#btn{
-    float: right;
-    margin-right: 10px;}
-
+#rsv{
+    background-color: blanchedalmond;
+    height: 20%;
+}
 #rate{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
@@ -62,7 +68,7 @@ section > fas-fa-star{color: yellow;}
 #rate .number{
     background-color: rosybrown;}
 
-#rate .cmt{
+#rate .count{
     background-color: seagreen;}
 
 #map{background-color: lavenderblush;}
