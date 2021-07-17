@@ -1,6 +1,6 @@
-// $(function() {
-//     $( "#datepicker" ).datepicker({ minDate: 0});
-// });
+$(function() {
+    $( "#datepicker" ).datepicker({ minDate: 0});
+});
     $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
