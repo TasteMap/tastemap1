@@ -23,9 +23,14 @@
 </th:block>
 
 <th:block layout:fragment="content">
+    <div th:if="${param.needEmail != null and param.needEmail[0] == '1'}">이메일 인증을 시도해 주세요.</div>
+    <div th:if="${param.auth != null and param.auth[0] == '1'}" th:text="인증되었습니다."></div>
+    <div th:if="${param.auth != null and param.auth[0] == '0'}" th:text="인증에실패하였습니다."></div>
+    <div th:if="${param.error}">로그인에 실패하였습니다.</div>
+
     <div class="bg"></div>
     <div id="login">
-        <form>
+        <form class="login_form" th:action="@{home}" method="post" th:object="${userEntity}">
             <h1>Log-in</h1>
             <div class="login_sns">
                 <li><a href=""><i class="fab fa-instagram"></i></a></li>
@@ -34,11 +39,11 @@
             </div>
             <div class="login_id">
                 <h4>ID</h4>
-                <input type="email" name="" id="" placeholder="ID">
+                <input type="email" th:field="*{email}" placeholder="email" autofocus required>
             </div>
             <div class="login_pw">
                 <h4>Password</h4>
-                <input type="password" name="" id="" placeholder="Password">
+                <input type="password" th:field="*{pw}" placeholder="Password" required>
             </div>
             <div class="submit">
                 <input type="submit" value="submit">
@@ -46,30 +51,31 @@
         </form>
     </div>
     <div id="join">
-        <form>
+        <form id="frm" th:action="@{/user/join}" method="post" th:object="${userEntity}">
             <h1>Join</h1>
             <div class="section">
                 <div>ID</div>
-                <input type="text" placeholder="ID" id='join_id'>
-                <button id="idCheckBtn">Check</button>
+                <input type="text" th:field="*{email}" placeholder="email" required>
+                <button id="idCheckBtn" type="button">Check</button>
             </div>
+            <div id="chkUidResult"></div>
             <div class="section">
                 <div>Password</div>
-                <input type="password" placeholder="Password" id="join_pwd">
+                <input type="password" id="chkUpw" th:field="*{pw}"placeholder="Password" required>
             </div>
             <div class="section">
                 <div>Password Check</div>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" required>
             </div>
             <div class="section">
                 <div>Name</div>
-                <input type="text" placeholder="Name">
+                <input type="text" th:field="*{nm}" placeholder="Name" required>
             </div>
             <div class="section">
                 <div>Tel</div>
-                <input type="text" placeholder="tel">
+                <input type="text" th:field="*{tel}" placeholder="tel" required>
             </div>
-            <button id="joinBtn" type="button" onclick="joinControl()">
+            <button id="joinBtn" onclick="joinControl()">
                 JOIN US!
             </button>
         </form>
@@ -115,12 +121,12 @@
                 <div id="map" style="background-color:tomato;width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
                 <div id="menu_wrap" class="bg_white">
-                        <div class="search">
-                            <form onsubmit="searchPlaces(); return false;">
-                                <input type="text" placeholder="이태원 맛집" id="keyword" size="15">
-                                <button class="map_btn" type="submit">검색</button>
-                            </form>
-                        </div>
+                    <div class="search">
+                        <form onsubmit="searchPlaces(); return false;">
+                            <input type="text" placeholder="이태원 맛집" id="keyword" size="15">
+                            <button class="map_btn" type="submit">검색</button>
+                        </form>
+                    </div>
                     <hr>
                     <ul id="placesList"></ul>
                     <div id="pagination"></div>
@@ -136,14 +142,14 @@
             <div class="box">서구</div>
             <div class="box">남구</div>
             <div class="box">북구</div>
-            <div class="box">달성구</div>
+            <div class="box">달서구</div>
             <div class="box">달성군</div>
         </div>
 
         <!-- 슬라이드 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <a th:href="@{/board/list}"><div class="swiper-slide">한식</div></a>
+                <div class="swiper-slide">한식</div>
                 <div class="swiper-slide">양식</div>
                 <div class="swiper-slide">일식</div>
                 <div class="swiper-slide">중식</div>

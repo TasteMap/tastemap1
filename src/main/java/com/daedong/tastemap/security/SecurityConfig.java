@@ -38,14 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         http.formLogin()
-                .loginPage("/user/login")
+                .loginPage("/home")
                 .usernameParameter("email")
                 .passwordParameter("pw")
                 .defaultSuccessUrl("/home");//로그인 성공하면 여기로감
 
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/login")
+                .logoutSuccessUrl("/home")
                 .invalidateHttpSession(true);
     }
 

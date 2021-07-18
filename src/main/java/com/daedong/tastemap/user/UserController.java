@@ -18,13 +18,13 @@ public class UserController {
     @PostMapping("/join")
     public String joinProc(UserEntity userEntity){
         service.join(userEntity);
-        return "redirect:login?needEmail=1";
+        return "redirect:home?needEmail=1";
     }
 
     @GetMapping("/auth")
     public String auth(UserEntity param){
         int result = service.auth(param);
-        return "redirect:login?auth=" + result;
+        return "redirect:home?auth=" + result;
     }
 
 }
