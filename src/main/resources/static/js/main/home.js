@@ -1,20 +1,20 @@
 //join ajax처리
 
-var frmElem = document.querySelector('#frm');
-var uidElem = frmElem.email;
-var upwElem = frmElem.pw;
-var chkUpwElem = frmElem.chkUpw;
-var unmElem = frmElem.nm;
-var chkUidResultElem = frmElem.querySelector('#chkUidResult');
+const frmElem = document.querySelector('#frm');
+const uidElem = frmElem.email;
+const upwElem = frmElem.pw;
+const chkUpwElem = frmElem.chkUpw;
+const unmElem = frmElem.nm;
+//const chkUidResultElem = frmElem.querySelector('#chkUidResult');
 
-var btnChkIdElem = frmElem.idCheckBtn; // 중복ID체크 버튼
+const btnChkIdElem = frmElem.idCheckBtn; // 중복ID체크 버튼
 btnChkIdElem.addEventListener('click', function(){
     idChkAjax(uidElem.value);
 });
 
 function idChkAjax(uid){
     console.log(uid);
-    chkUidResultElem.innerText = '이 아이디는 사용할 수 있습니다.';
+    alert('이 아이디는 사용할 수 있습니다.');
 
     fetch('/user/idChk?uid=' + uid)
         .then(function(res){
@@ -24,10 +24,10 @@ function idChkAjax(uid){
             console.log(myJson);
             switch(myJson.result){
                 case 0:
-                    chkUidResultElem.innerText = '이 아이디는 사용할 수 있습니다';
+                    alert('이 아이디는 사용할 수 있습니다');
                     break;
                 case 1:
-                    chkUidResultElem.innerText = '이 아이디는 사용할 수 없습니다';
+                    alert('이 아이디는 사용할 수 없습니다');
                     break;
             }
         });

@@ -23,11 +23,6 @@
 </th:block>
 
 <th:block layout:fragment="content">
-    <div th:if="${param.needEmail != null and param.needEmail[0] == '1'}">이메일 인증을 시도해 주세요.</div>
-    <div th:if="${param.auth != null and param.auth[0] == '1'}" th:text="인증되었습니다."></div>
-    <div th:if="${param.auth != null and param.auth[0] == '0'}" th:text="인증에실패하였습니다."></div>
-    <div th:if="${param.error}">로그인에 실패하였습니다.</div>
-
     <div class="bg"></div>
     <div id="login">
         <form class="login_form" th:action="@{home}" method="post" th:object="${userEntity}">
@@ -58,7 +53,6 @@
                 <input type="text" th:field="*{email}" placeholder="email" required>
                 <button id="idCheckBtn" type="button">Check</button>
             </div>
-            <div id="chkUidResult"></div>
             <div class="section">
                 <div>Password</div>
                 <input type="password" id="chkUpw" th:field="*{pw}"placeholder="Password" required>
@@ -75,7 +69,7 @@
                 <div>Tel</div>
                 <input type="text" th:field="*{tel}" placeholder="tel" required>
             </div>
-            <button id="joinBtn" onclick="joinControl()">
+            <button id="joinBtn">
                 JOIN US!
             </button>
         </form>

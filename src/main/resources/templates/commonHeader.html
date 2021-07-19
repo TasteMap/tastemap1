@@ -26,7 +26,7 @@
             </li>
             <li class="header_item" sec:authorize="isAuthenticated()">
                 <a th:href="@{/user/mypage}"  class="header_menulink"><span class="menu_text">MyPage</span></a>
-                <a th:href="@{/user/logout}">로그아웃</a>
+                <a th:href="@{/user/logout}" class="header_menulink"><span class="menu_text">logout</span></a>
             </li>
         </ul>
     </div>

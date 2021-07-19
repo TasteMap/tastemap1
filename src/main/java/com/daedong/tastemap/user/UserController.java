@@ -14,17 +14,19 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @GetMapping("/login")
+    public void login(UserEntity userEntity){}
 
     @PostMapping("/join")
     public String joinProc(UserEntity userEntity){
         service.join(userEntity);
-        return "redirect:home?needEmail=1";
+        return "redirect:login?needEmail=1";
     }
 
     @GetMapping("/auth")
     public String auth(UserEntity param){
         int result = service.auth(param);
-        return "redirect:home?auth=" + result;
+        return "redirect:login?auth=" + result;
     }
 
 }
