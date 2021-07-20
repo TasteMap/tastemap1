@@ -1,22 +1,23 @@
 //join ajax처리
-
 const frmElem = document.querySelector('#frm');
 const uidElem = frmElem.email;
 const upwElem = frmElem.pw;
-const chkUpwElem = frmElem.chkUpw;
-const unmElem = frmElem.nm;
-//const chkUidResultElem = frmElem.querySelector('#chkUidResult');
+const chkUpwElem = document.querySelector('#chkUpw');
 
 const btnChkIdElem = frmElem.idCheckBtn; // 중복ID체크 버튼
+
 btnChkIdElem.addEventListener('click', function(){
     idChkAjax(uidElem.value);
 });
 
-function idChkAjax(uid){
-    console.log(uid);
-    alert('이 아이디는 사용할 수 있습니다.');
+function idChkAjax(email) {
+    console.log(email)
+    if(email.length == 0){
+        alert('이메일을 작성해 주세요');
+        return;
+    }
 
-    fetch('/user/idChk?uid=' + uid)
+    fetch(`/user/idChk?email=${email}`)
         .then(function(res){
             return res.json();
         })
@@ -34,28 +35,10 @@ function idChkAjax(uid){
 }
 
 function frmChk(){
-    //이상이 생기면 return false;할것임
+    const upwVal = upwElem.value;
+    const chkUpwVal = chkUpwElem.value;
 
-    var uidVal = uidElem.value;
-    // 이 값이 2자 이하면 리턴을 false로..
-    // 아이디를 하나도 안적으면 alert로 "아이디를 작성해주세요"
-    if(uidVal.length <= 2){
-        if(uidVal.length == 0){
-            alert('아이디를 작성해 주세요');
-        }else{
-            alert('아이디는 3자 이상 작성해주세요');
-        }
-        return false;
-    }
-
-    var upwVal = upwElem.value;
-    var chkUpwVal = chkUpwElem.value;
-
-    // 비밀번호를 하나도 안적으면 alert로 "비밀번호를 작성해주세요"
-    // 3자이하면 alert "비밀번호는 4자 이상 작성해주세요" false리턴
-    // 비밀번호와 확인 비밀번호가 다르면 "비밀번호를 확인해 주세요" false리턴
-
-    if(upwVal.length < 3){
+    if(upwVal.length <= 3){
         if(upwVal.length == 0){
             alert('비밀번호를 작성해 주세요');
         }else{
@@ -64,11 +47,6 @@ function frmChk(){
         return false;
     }else if(upwVal !== chkUpwVal){
         alert('비밀번호를 확인해 주세요');
-        return false;
-    }
-
-    if(unmElem.value.length < 2){
-        alert('이름은 2자 이상 작성해주세요.');
         return false;
     }
 }

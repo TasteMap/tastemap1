@@ -3,6 +3,7 @@ package com.daedong.tastemap.user;
 import com.daedong.tastemap.common.EmailService;
 import com.daedong.tastemap.common.MySecurityUtils;
 import com.daedong.tastemap.security.IAuthenticationFacade;
+import com.daedong.tastemap.security.model.UserDetailsServiceImpl;
 import com.daedong.tastemap.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,6 +25,8 @@ public class UserService{
     @Autowired
     private UserMapper mapper;
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailService;
 
     public int join(UserEntity param){
         String authCd = secUtils.getRandomDigit(5);
@@ -31,7 +34,8 @@ public class UserService{
         String hashedPw = passwordEncoder.encode(param.getPw());
         param.setPw(hashedPw);
         param.setAuthCd(authCd);
-        int result = mapper.join(param);
+        param.setProvider("local");
+        int result = userDetailService.join(param);
 
         if(result == 1){ //메일쏘기(id, authcd값을 메일로 쏜다)
             String subject = "인증메일입니다";
@@ -47,5 +51,13 @@ public class UserService{
         return mapper.auth(param);
     }
 
+    public int idChk(UserEntity param){
+        UserEntity param2 = mapper.idChk(param);
+        if(param2 == null){
+            return 0;
+        }
+        return 1;
+
+    }
 }
 

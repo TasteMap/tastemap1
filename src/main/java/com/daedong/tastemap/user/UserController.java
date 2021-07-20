@@ -1,11 +1,13 @@
 package com.daedong.tastemap.user;
 
 import com.daedong.tastemap.user.model.UserEntity;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -27,6 +29,15 @@ public class UserController {
     public String auth(UserEntity param){
         int result = service.auth(param);
         return "redirect:login?auth=" + result;
+    }
+
+    @ResponseBody
+    @GetMapping("/idChk")
+    public Map<String, Object> idChk(UserEntity param){
+        System.out.println(param);
+        Map<String, Object> data =  new HashMap<>();
+        data.put("result", service.idChk(param));
+        return data;
     }
 
 }
