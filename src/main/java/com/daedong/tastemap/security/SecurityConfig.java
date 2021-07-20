@@ -18,6 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetails;
+    @Autowired private CustomOAuth2UserService customOauth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -34,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .antMatchers("/user/login", "/user/join", "/user/auth", "/home").permitAll()
+                .antMatchers("/user/login", "/user/join", "/user/auth", "/home", "/user/idChk").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()
@@ -42,6 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("pw")
                 .defaultSuccessUrl("/home");//로그인 성공하면 여기로감
+
+        http.oauth2Login()
+                .loginPage("/home")
+                .defaultSuccessUrl("/home")
+                .failureUrl("/home")
+                .userInfoEndpoint() //OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당합니다.
+                .userService(customOauth2UserService);
 
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
