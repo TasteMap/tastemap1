@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daedong.tastemap.board.BoardMapper">
+    <sql id="list">
+        SELECT A.rsnm, A.iboard
+             ,(SELECT count(iboard, iuser) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+        FROM t_matzip A
+    </sql>
+    <select id="selBoard" resultType="BoardEntity">
+        SELECT * (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt FROM t_mapzip WHERE iboard = #{iboard}
+        FROM t_matzip A
+        WHERE iboard = ${iboard}
+        <!--DB : t_matzip, t_matzip_fav, t_user, t_matzip_cmt, t_matzip_rev-->
+    </select>
+    <select id="selBoardList" resultType="BoardEntity">
+        SELECT A.rsnm, A.iboard
+        ,(SELECT count(iboard, iuser) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+        FROM t_matzip A
+        <!--DB : t_matzip, t_matzip_fav -->
+    </select>
+    <select id="selBoardList_Fav" resultType="BoardEntity"> <!--좋아요-->
+        <include refid="list"/>
+        ORDER BY (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard=#{iboard} DESC)
+        <!--DB : t_matzip, t_matzip_fav -->
+    </select>
+    <select id="selBoardList_rsad" resultType="BoardEntity"> <!--구/군별-->
+        <include refid="list"/>
+        ORDER BY (SELECT COUNT(rsad) FROM t_matzip WHERE rsad=#{rsad} DESC)
+        <!--DB : t_matzip, t_matzip_fav -->
+    </select>
+    <select id="selBoardList_rsc" resultType="BoardEntity"> <!--업종별-->
+    <include refid="list"/>
+    ORDER BY (SELECT COUNT(rsc) FROM t_matzip WHERE rsc=#{rsc} DESC)
+    <!--DB : t_matzip, t_matzip_fav -->
+</select>
+</mapper>
