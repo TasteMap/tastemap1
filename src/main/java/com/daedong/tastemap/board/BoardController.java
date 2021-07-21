@@ -19,4 +19,19 @@ public class BoardController {
     @GetMapping("/list")
     public List<BoardDomain> list() {return service.selBoardList();}
 
+    @GetMapping("/list/star_5")
+    public List<BoardDomain> star() {return service.selBoardList_Fav();}
+
+    @GetMapping("/list/jung")
+    public List<BoardDomain> jung() {return service.selBoardList_rsad();}
+
+    @GetMapping("/list/korean")
+    public List<BoardDomain> korean() {return service.selBoardList_rsc();}
+
+    @GetMapping("/detail")
+    public BoardEntity detail(BoardEntity boardEntity){return service.selBoard();}
+
+
+
+
 }

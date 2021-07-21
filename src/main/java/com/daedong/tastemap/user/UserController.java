@@ -1,5 +1,6 @@
 package com.daedong.tastemap.user;
 
+import com.daedong.tastemap.board.model.BoardEntity;
 import com.daedong.tastemap.user.model.UserEntity;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,6 @@ public class UserController {
         return data;
     }
 
+    @GetMapping("/mypage")
+    public String mypage(BoardEntity param) {return "/user/mypage";}
 }

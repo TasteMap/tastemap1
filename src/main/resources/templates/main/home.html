@@ -4,6 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="basicLayout">
 
+<link rel="stylesheet" href="../../static/css/main/home.css">
 <th:block layout:fragment="css">
     <link rel="stylesheet" th:href="@{/css/main/home.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
@@ -131,25 +132,25 @@
 
         <!-- 칸칸이 -->
         <div id="grid">
-            <div class="box">중구</div>
-            <div class="box">수성구</div>
-            <div class="box">동구</div>
-            <div class="box">서구</div>
-            <div class="box">남구</div>
-            <div class="box">북구</div>
-            <div class="box">달서구</div>
-            <div class="box">달성군</div>
+            <div class="box"><a href="jung">중구</a></div>
+            <div class="box"><a href="suseong">수성구</a></div>
+            <div class="box"><a href="east">동구</a></div>
+            <div class="box"><a href="west">서구</a></div>
+            <div class="box"><a href="south">남구</a></div>
+            <div class="box"><a href="north">북구</a></div>
+            <div class="box"><a href="dalseo">달서구</a></div>
+            <div class="box"><a href="dalseong">달성군</a></div>
         </div>
 
         <!-- 슬라이드 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">한식</div>
-                <div class="swiper-slide">양식</div>
-                <div class="swiper-slide">일식</div>
-                <div class="swiper-slide">중식</div>
-                <div class="swiper-slide">동남아식</div>
-                <div class="swiper-slide">분식</div>
+                <div class="swiper-slide"><a href="korean">한식</a><div class="layer"></div></div>
+                <div class="swiper-slide"><a href="western">양식</a><div class="layer"></div></div>
+                <div class="swiper-slide"><a href="japanese">일식</a><div class="layer"></div></div>
+                <div class="swiper-slide"><a href="chinese">중식</a><div class="layer"></div></div>
+                <div class="swiper-slide"><a href="southern">동남아식</a><div class="layer"></div></div>
+                <div class="swiper-slide"><a href="snack">분식</a><div class="layer"></div></div>
             </div>
 
             <!-- 네비게이션 -->

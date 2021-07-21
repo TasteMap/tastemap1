@@ -11,7 +11,10 @@
     font-weight: normal;
     font-style: normal;
 }
-#dropbox_menu{width: 100%;}
+#dropbox_menu{
+    position: fixed;
+    top: 50px;
+    width: 100%;}
 .nav{
     flex-direction: row;
     flex: 1;
@@ -20,8 +23,17 @@
     overflow:hidden;
 }
 .nav a{
-    font-family: 'twaysky';
+    font-family: 'twayair';
     color: aliceblue;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav a:hover{
+    color: #ffed7b;
+    text-shadow: 5px 5px 10px rgb(111, 111, 111);
+    background-color: rgba(255, 101, 42, 0.5);
 }
 .nav li{
     width:20%;
@@ -31,13 +43,22 @@
 }
 .submenu li{
     width: 90%;
-    padding-left: 5%;
     line-height:50px;
 }
 .submenu li a{
+    width: 100%;
+    font-family: 'twayair';
+    font-size: 1.1rem;
+    text-align: center;
+    color: #b6fd99;
+    background: linear-gradient(to left, rgb(253, 81, 51), rgb(252, 145, 37));
+}
+
+.submenu li a:hover{
     font-family: 'twayair';
     text-align: center;
-    color:#24f572;
+    color: #fcea46;
+    background-color: rgba(199, 255, 235, 0.5);
 }
 .submenu{
     height:0px;
@@ -61,6 +82,7 @@
     padding: 0;
 }
 section{
+    padding-top: 80px;
     display: grid;
     grid-template-columns: 0.5fr;
     grid-template-rows: repeat(3, 0.5fr);
