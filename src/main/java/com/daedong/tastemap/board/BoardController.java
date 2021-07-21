@@ -4,10 +4,10 @@ import com.daedong.tastemap.board.model.BoardDomain;
 import com.daedong.tastemap.board.model.BoardEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @Controller
@@ -17,16 +17,14 @@ public class BoardController {
     @Autowired private BoardService service;
 
     @GetMapping("/list")
-    public List<BoardDomain> list() {return service.selBoardList();}
+    public String test(@RequestParam(value="rsad", defaultValue="0") String rsad, @RequestParam(value="rsc", defaultValue="0") String rsc
+        , Model model) {
+        BoardEntity param = new BoardEntity();
+        param.setRsad(rsad);
+        model.addAttribute("list", service.selBoardRsad(param));
+        return "/board/list";
+    }
 
-    @GetMapping("/list/star_5")
-    public List<BoardDomain> star() {return service.selBoardList_Fav();}
-
-    @GetMapping("/list/jung")
-    public List<BoardDomain> jung() {return service.selBoardList_rsad();}
-
-    @GetMapping("/list/korean")
-    public List<BoardDomain> korean() {return service.selBoardList_rsc();}
 
     @GetMapping("/detail")
     public BoardEntity detail(BoardEntity boardEntity){return service.selBoard();}

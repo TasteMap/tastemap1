@@ -8,9 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
-    List<BoardDomain> selBoardList();
-    List<BoardDomain> selBoardList_Fav();
-    List<BoardDomain> selBoardList_rsad();
-    List<BoardDomain> selBoardList_rsc();
+    List<BoardDomain> selBoardRsad(BoardEntity param);
+    List<BoardDomain> selBoardRsc(BoardEntity param);
     BoardEntity selBoard();
 }

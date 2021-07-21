@@ -93,7 +93,7 @@ section{
     justify-content: center;
     align-items: center;
 }
-#content{
+.content{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.5fr 1.5fr;
