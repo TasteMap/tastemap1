@@ -5,13 +5,13 @@
 <mapper namespace="com.daedong.tastemap.board.BoardMapper">
     <sql id="list">
         SELECT A.rsnm, A.iboard
-             ,(SELECT count(iboard, iuser) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+             ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
         FROM t_matzip A
     </sql>
 
     <select id="selBoardRsad" resultType="BoardDomain">
         <include refid="list"/>
-        where A.rsad = #{rsad}
+        WHERE A.rsad = #{rsad}
     </select>
 
     <select id="selBoardRsc" resultType="BoardDomain">
@@ -20,9 +20,10 @@
     </select>
 
     <select id="selBoard" resultType="BoardEntity">
-        SELECT * (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt FROM t_mapzip WHERE iboard = #{iboard}
-        FROM t_matzip A
-        WHERE iboard = ${iboard}
+        SELECT *
+        (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt
+        FROM t_mapzip
+        WHERE iboard = #{iboard}
         <!--DB : t_matzip, t_matzip_fav, t_user, t_matzip_cmt, t_matzip_rev-->
     </select>
     <!-- <select id="selBoardList" resultType="BoardEntity">
@@ -31,4 +32,49 @@
         FROM t_matzip A WHERE iboard = #{iboard}
        -DB : t_matzip, t_matzip_fav
     </select>-->
+
+    <!-- ////////////// DETAIL ///////////////-->
+
+    <insert id="insBoard" useGeneratedKeys="true" keyProperty="iboard">
+        INSERT INTO t_matzip
+            ( iboard, rsnm, rsc, rsad, rstel )
+        VALUES
+            ( #{iboard}, #{rsnm}, #{rsc}, #{rsad}, #{rstel} )
+    </insert>
+
+    <!-- //////////////////////////// cmt ///////////////////////-->
+    <select id="selCmt" resultType="CmtDomain">
+        SELECT A.*, COUNT(A.icmt) - 1 AS isMore
+        FROM (
+                 SELECT
+                     A.icmt, A.cmt, A.regdate, A.iboard
+                      , B.iuser, B.nm as writer, B.mainProfile as writerProfile
+                 FROM t_matzip_cmt A
+                          INNER JOIN t_user B
+                                     ON A.iuser = B.iuser
+                 WHERE A.ifeed = ${ifeed}
+                 ORDER BY icmt ASC
+                     LIMIT 2
+             ) A
+        GROUP BY A.iboard
+    </select>
+
+    <select id="selCmtList" resultType="CmtDomain">
+        SELECT
+            A.icmt, A.cmt, A.regdate
+             , B.iuser, B.nm as writer, B.mainProfile as writerProfile
+        FROM t_matzip_cmt A
+                 INNER JOIN t_user B
+                            ON A.iuser = B.iuser
+        WHERE A.iboard = ${iboard}
+        ORDER BY icmt ASC
+        LIMIT 1, 900000
+    </select>
+
+    <insert id="insCmt">
+        INSERT INTO t_matzip_cmt
+            ( iboard, iuser, cmt )
+        VALUES
+            ( ${iboard}, ${iuser}, #{cmt} )
+    </insert>
 </mapper>

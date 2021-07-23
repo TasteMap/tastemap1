@@ -20,26 +20,26 @@
                     <li>
                         <a href="#" id="dst">구/군별</a>
                         <ul class="submenu">
-                            <li><a href="jung">중구</a></li>
-                            <li><a href="suseong">수성구</a></li>
-                            <li><a href="east">동구</a></li>
-                            <li><a href="west">서구</a></li>
-                            <li><a href="south">남구</a></li>
-                            <li><a href="north">북구</a></li>
-                            <li><a href="dalseo">달서구</a></li>
-                            <li><a href="dalseong">달성군</a></li>
+                            <li><a href="/board/list?rs=0">중구</a></li>
+                            <li><a href="/board/list?rs=1">수성구</a></li>
+                            <li><a href="/board/list?rs=2">동구</a></li>
+                            <li><a href="/board/list?rs=3">서구</a></li>
+                            <li><a href="/board/list?rs=4">남구</a></li>
+                            <li><a href="/board/list?rs=5">북구</a></li>
+                            <li><a href="/board/list?rs=6">달서구</a></li>
+                            <li><a href="/board/list?rs=7">달성군</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="#">음식별</a>
                         <ul class="submenu">
-                            <li><a href="korean">한식</a></li>
-                            <li><a href="western">양식</a></li>
-                            <li><a href="japanese">일식</a></li>
-                            <li><a href="chinese">중식</a></li>
-                            <li><a href="southern">동남아식</a></li>
-                            <li><a href="snack">분식</a></li>
+                            <li><a href="/board/list?rs=8">한식</a></li>
+                            <li><a href="/board/list?rs=9">양식</a></li>
+                            <li><a href="/board/list?rs=10">일식</a></li>
+                            <li><a href="/board/list?rs=11">중식</a></li>
+                            <li><a href="/board/list?rs=12">동남아식</a></li>
+                            <li><a href="/board/list?rs=13">분식</a></li>
                         </ul>
                     </li>
 
@@ -59,9 +59,11 @@
 
             <section>
                 <div class="content" th:each="item : ${list}">
+<!--                    <a href="/board/detail?rs= th:each="item: ${item.iboard}"">-->
                     <div class="img">1</div>
                     <div class="title">${item.rsnm}</div>
                     <div class="menu">3</div>
+                    </a>
                 </div>
             </section>
     </th:block>
