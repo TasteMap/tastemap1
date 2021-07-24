@@ -4,14 +4,14 @@
 
 <mapper namespace="com.daedong.tastemap.board.BoardMapper">
     <sql id="list">
-        SELECT A.rsnm, A.iboard
+        SELECT A.rsnm, A.iboard, A.rsad
              ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
         FROM t_matzip A
     </sql>
 
     <select id="selBoardRsad" resultType="BoardDomain">
         <include refid="list"/>
-        WHERE A.rsad = #{rsad}
+        WHERE A.rsad = #{rsad} LIKE CONCAT('대구광역시 ', #{rsad}, '%')
     </select>
 
     <select id="selBoardRsc" resultType="BoardDomain">

@@ -58,12 +58,10 @@
             </header>
 
             <section>
-                <div class="content" th:each="item : ${list}">
-<!--                    <a href="/board/detail?rs= th:each="item: ${item.iboard}"">-->
-                    <div class="img">1</div>
-                    <div class="title">${item.rsnm}</div>
-                    <div class="menu">3</div>
-                    </a>
+                <div class="content" th:each="item : ${list}" onclick="">
+                    <div class="img"></div>
+                    <div class="title" th:text="${item.rsnm}">2</div>
+                    <div class="menu" th:text="${item.rsad}">3</div>
                 </div>
             </section>
     </th:block>
