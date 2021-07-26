@@ -75,8 +75,7 @@ public class BoardController {
 
   //  @GetMapping("/cmt")
   //  public CmtEntity insCmt(CmtEntity param){
-  //      return service.insCmt();
-  //  }
+  //      return service.insCmt();//    }
 
     @ResponseBody
     @GetMapping("/cmt")
