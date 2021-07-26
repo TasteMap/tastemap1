@@ -15,68 +15,48 @@ li{list-style: none;}
 a{text-decoration: none;}
 
 section{
+    position: relative;
+    top: 80px;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 5%;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: calc(100% - 80px);
-    margin: 20px auto 0 auto;
+    width: 100%;
+    height: calc(100% - 100px);
+    /*margin: 20px auto 0 auto;*/
+    overflow: hidden;
+    grid-template-columns: 0.5fr;
 }
 
-section > div{
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
-}
-section > fa-star{color: yellow;}
-#img{
-    background-color: tomato;
-    height: 70%;
-}
+/*section > div{*/
+/*    width: calc(100% - 10px);*/
+/*    height: calc(100% - 10px);*/
+/*}*/
+
 #res{
-    background-color: darkcyan;
-    grid-column: 2/4;
-    height: 70%;
+    height: 100%;
     width: 100%;
 }
 #res .title{
     background-color: beige;
-    height: 20%;
+    height: 10%;
 }
-
-#res .menu{
+#res .rsad{
+    background-color: #ded17c;
+    height: 5%;
+}
+#res .fav{
     background-color: burlywood;
-    height: 60%;
+    height: 5%;
 }
 #rsv{
     background-color: blanchedalmond;
-    height: 20%;
+    height: 5%;
 }
-#rate{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    background-color: antiquewhite;
-    text-align: center;}
-
-#rate .star{
-    padding-top: 10px;
-    background-color: thistle;
-}
-
-#rate .number{
-    background-color: rosybrown;}
-
-#rate .count{
-    background-color: seagreen;}
-
-#map{background-color: lavenderblush;}
-
 #rv{
     background-color: indianred;
-    grid-column: 2 / 4;
+    height: 60%;
 }
-#text{
+.text{
     background-color: cadetblue;
+    height: 15%;
 }

@@ -1,17 +1,12 @@
 package com.daedong.tastemap.board.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-public class BoardDomain {
-    private int iboard;
-    private String rsnm;
-    private String rsc;
-    private String rsad;
+@Data
+public class BoardDomain extends BoardEntity{
     private int iuser;
     private int favCnt;
     private int isFav;

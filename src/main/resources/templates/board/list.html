@@ -10,6 +10,7 @@
     </th:block>
 
     <th:block layout:fragment="js">
+        <script defer th:src="@{/js/board/list.js}"></script>
         <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
     </th:block>
 
@@ -42,7 +43,6 @@
                             <li><a href="/board/list?rs=13">분식</a></li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="#">추천별</a>
                         <ul class="submenu">
@@ -58,10 +58,10 @@
             </header>
 
             <section>
-                <div class="content" th:each="item : ${list}" onclick="">
-                    <div class="img"></div>
-                    <div class="title" th:text="${item.rsnm}">2</div>
-                    <div class="menu" th:text="${item.rsad}">3</div>
+                <div class="content" th:each="item : ${list}" th:onclick="|moveToDetail(${item.iboard})|">
+<!--                    <div class="img"></div>-->
+                    <div class="title" th:text="${item.rsnm}"></div>
+<!--                    <div class="menu" th:text="${item.rsad}">3</div>-->
                 </div>
             </section>
     </th:block>

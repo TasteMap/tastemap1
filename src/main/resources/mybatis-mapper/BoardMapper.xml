@@ -19,13 +19,6 @@
         WHERE A.rsc = #{rsc}
     </select>
 
-    <select id="selBoard" resultType="BoardEntity">
-        SELECT *
-        (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt
-        FROM t_mapzip
-        WHERE iboard = #{iboard}
-        <!--DB : t_matzip, t_matzip_fav, t_user, t_matzip_cmt, t_matzip_rev-->
-    </select>
     <!-- <select id="selBoardList" resultType="BoardEntity">
         SELECT A.rsnm, A.iboard
         ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
@@ -34,13 +27,12 @@
     </select>-->
 
     <!-- ////////////// DETAIL ///////////////-->
-
-    <insert id="insBoard" useGeneratedKeys="true" keyProperty="iboard">
-        INSERT INTO t_matzip
-            ( iboard, rsnm, rsc, rsad, rstel )
-        VALUES
-            ( #{iboard}, #{rsnm}, #{rsc}, #{rsad}, #{rstel} )
-    </insert>
+    <select id="selBoard" resultType="BoardDomain">
+        SELECT *,
+        (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt
+        FROM t_matzip
+        WHERE iboard = #{iboard}
+    </select>
 
     <!-- //////////////////////////// cmt ///////////////////////-->
     <select id="selCmt" resultType="CmtDomain">
@@ -52,7 +44,7 @@
                  FROM t_matzip_cmt A
                           INNER JOIN t_user B
                                      ON A.iuser = B.iuser
-                 WHERE A.ifeed = ${ifeed}
+                 WHERE A.iboard = ${iboard}
                  ORDER BY icmt ASC
                      LIMIT 2
              ) A
@@ -60,15 +52,11 @@
     </select>
 
     <select id="selCmtList" resultType="CmtDomain">
-        SELECT
-            A.icmt, A.cmt, A.regdate
-             , B.iuser, B.nm as writer, B.mainProfile as writerProfile
+        SELECT A.*, B.nm as writer
         FROM t_matzip_cmt A
-                 INNER JOIN t_user B
-                            ON A.iuser = B.iuser
-        WHERE A.iboard = ${iboard}
-        ORDER BY icmt ASC
-        LIMIT 1, 900000
+        INNER JOIN t_user B
+        ON A.iuser = B.iuser
+        WHERE iboard = #{iboard}
     </select>
 
     <insert id="insCmt">
@@ -77,4 +65,39 @@
         VALUES
             ( ${iboard}, ${iuser}, #{cmt} )
     </insert>
+
+    <!--///////////////fav/////////////////-->
+    <insert id="insFav">
+        INSERT INTO t_matzip_fav(iboard, iuser)
+        VALUES(#{iboard}, #{iuser})
+    </insert>
+    <select id="selFav" resultType="BoardDomain">
+        SELECT count(*) as favCnt
+        FROM t_matzip_fav
+        WHERE iboard = #{iboard}
+    </select>
+    <select id="selFavList" resultType="BoardDomain">
+        SELECT B.rsnm
+        FROM t_matzip_fav A
+        INNER JOIN t_matzip B
+        ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
+    <delete id="delFav">
+        DELETE FROM t_matzip_fav
+        WHERE iboard=#{iboard} AND iuser=#{iuser}
+    </delete>
+
+    <!--/////////////////rsv///////////////////-->
+    <insert id="insRsv">
+        INSERT INTO t_matzip_rev(iboard, iuser, irev, dt, memberct)
+        VALUES(#{iboard}, #{iuser}, #{irev}, #{dt}, #{memberct})
+    </insert>
+    <select id="selRsv" resultType="RsvEntity">
+        SELECT A.dt, A.memberct, B.rsnm
+        FROM t_matzip_rev A
+        INNER JOIN t_matzip B
+        ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
 </mapper>

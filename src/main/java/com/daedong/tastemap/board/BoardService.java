@@ -15,7 +15,11 @@ public class BoardService {
 
     public List<BoardDomain> selBoardRsad(BoardDomain param) { return mapper.selBoardRsad(param); }
     public List<BoardDomain> selBoardRsc(BoardDomain param) {return mapper.selBoardRsc(param);}
-    public BoardEntity selBoard() {return mapper.selBoard();}
+    public BoardDomain selBoard(int iboard) {
+        BoardDomain boardDomain = mapper.selBoard(iboard);
+        System.out.println(boardDomain);
+return mapper.selBoard(iboard);
+    }
     public CmtEntity insCmt(){return mapper.insCmt();}
     public List<CmtDomain> selCmtList() {return mapper.selCmtList();}
 }

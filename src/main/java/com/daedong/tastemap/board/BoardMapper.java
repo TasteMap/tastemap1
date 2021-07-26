@@ -12,7 +12,7 @@ import java.util.List;
 public interface BoardMapper {
     List<BoardDomain> selBoardRsad(BoardDomain param);
     List<BoardDomain> selBoardRsc(BoardDomain param);
-    BoardEntity selBoard();
+    BoardDomain selBoard(int iboard);
     CmtEntity insCmt();
     List<CmtDomain> selCmtList();
 }

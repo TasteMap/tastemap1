@@ -64,24 +64,30 @@ public class BoardController {
         // System.out.println("list[0] : " + list.get(0));
         model.addAttribute("list", list);
 
-        return "/board/list";
+        return "board/list";
     }
 
-
     @GetMapping("/detail")
-    public BoardEntity detail(BoardEntity boardEntity){
-        BoardDomain param = new BoardDomain();
-        return service.selBoard();}
+    public String detail(@RequestParam(value="iboard") int iboard, Model model){
+        model.addAttribute("boardEntity", service.selBoard(iboard));
+        return "board/detail";
+    }
 
-//    @ResponseBody
-//    @GetMapping("/cmt")
-//    public CmtEntity insCmt(CmtEntity param){
-//        return service.insCmt();
-//    }
+  //  @GetMapping("/cmt")
+  //  public CmtEntity insCmt(CmtEntity param){
+  //      return service.insCmt();
+  //  }
 
     @ResponseBody
     @GetMapping("/cmt")
-    public List<CmtDomain> cmtList(CmtEntity param){
-        return service.selCmtList();
+    public List<CmtDomain> cmtList(@RequestParam("iboard") int iboard){
+        List<CmtDomain> cmtList = service.selCmtList();
+        return cmtList;
     }
+
+//    @PostMapping("/rsv")
+//    public String rsv(@RequestParam(value = "iboard") int iboard, Model model){
+//        model.addAttribute("rsvEntity", service.insRsv(iboard);
+//
+//    }
 }
