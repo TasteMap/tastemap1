@@ -3,26 +3,47 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="basicLayout">
+<head><title>프로필</title></head>
 
-  <th:block layout:fragment="css">
-    <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
-  </th:block>
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+</th:block>
 
-  <th:block layout:fragment="js">
+<th:block layout:fragment="js">
+  <script defer th:src="@{/js/user/mypage.js}"></script>
+</th:block>
 
-  </th:block>
-
-  <th:block layout:fragment="content">
-    <section>
-      <div id="img">profile image</div>
-      <div id="info">personal info
-        <div class="nm">name</div>
-        <div class="loc">location</div>
-        <div class="count">count</div>
+<th:block layout:fragment="content" th:with="profile=${#authentication.getPrincipal().getUser()}">
+  <div id="flexContainer">
+    <form th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
+      <div>
+        <img th:src="@{/pic/{iuser}/{img}(iuser=${profile.iuser}, img=${profile.profileImg})}">
       </div>
-      <div id="map">map</div>
-      <div id="scrap">scrap</div>
-      <div id="rev">reservation</div>
-    </section>
-  </th:block>
+
+      <div>
+        이미지 : <input type="file" id="img" name="img" multiple accept="image/*">
+        <input type="submit" value="업로드">
+      </div>
+    </form>
+    <table>
+      <tr>
+        <th>email</th>
+        <td th:text="${profile.email}"></td>
+      </tr>
+      <tr>
+        <th>name</th>
+        <td th:text="${profile.nm}"></td>
+      </tr>
+      <tr>
+        <th>tel</th>
+        <td th:text="${profile.tel}"></td>
+      </tr>
+      <tr>
+        <th>reg date</th>
+        <td th:text="${profile.regdt}"></td>
+      </tr>
+    </table>
+  </div>
+
+</th:block>
 </html>

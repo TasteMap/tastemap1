@@ -31,5 +31,17 @@
         WHERE email = #{email}
     </select>
 
+    <update id="updUser">
+        UPDATE t_user
+        <set>
+            <if test="pw != null and pw != ''">
+                pw = #{pw}
+            </if>
+            <if test="profileImg != null and profileImg != ''">
+                , profileImg = #{profileImg}
+            </if>
+        </set>
+        WHERE iuser = #{iuser}
+    </update>
 
 </mapper>

@@ -15,40 +15,65 @@
 li{list-style: none;}
 a{text-decoration: none;}
 
-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rowsrow: 1fr 1fr;
-    gap: 5%;
+body{
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+#flexContainer {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: calc(100% - 80px);
-    margin: 20px auto 0 auto;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
-section > div{
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
+img {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
 }
 
-#img{background-color: tomato;
-    height: 70%;
-    width: 65%;
-    position: relative;
-    left: 10%;
-    border-radius: 70%;
-    padding-left: 5%;
-    /*grid-row: 1fr 1fr;*/
+table{
+    margin-left: 30px;
 }
-#info{
-    background-color: darkcyan;
-    grid-column: 2 / 4;
-    height: 70%;
-}
-#map{background-color: lavenderblush;
-    height: 70%;}
-#scrap{background-color: yellow;
-    height: 70%;}
-#rev{background-color: indianred;
-    height: 70%;}
+
+
+/*section{*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr 1fr;*/
+/*    grid-template-rowsrow: 1fr 1fr;*/
+/*    gap: 5%;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 80%;*/
+/*    height: calc(100% - 100px);*/
+/*    !*margin: 20px auto 0 auto;*!*/
+/*}*/
+
+/*section > div{*/
+/*    width: calc(100% - 10px);*/
+/*    height: calc(100% - 10px);*/
+/*}*/
+
+/*#img{background-color: tomato;*/
+/*    height: 70%;*/
+/*    width: 65%;*/
+/*    position: relative;*/
+/*    left: 10%;*/
+/*    border-radius: 70%;*/
+/*    padding-left: 5%;*/
+/*    !*grid-row: 1fr 1fr;*!*/
+/*}*/
+/*#info{*/
+/*    background-color: darkcyan;*/
+/*    grid-column: 2 / 4;*/
+/*    height: 70%;*/
+/*}*/
+/*#map{background-color: lavenderblush;*/
+/*    height: 70%;}*/
+/*#scrap{background-color: yellow;*/
+/*    height: 70%;}*/
+/*#rev{background-color: indianred;*/
+/*    height: 70%;}*/
