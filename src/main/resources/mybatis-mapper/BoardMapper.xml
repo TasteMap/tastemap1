@@ -35,22 +35,6 @@
     </select>
 
     <!-- //////////////////////////// cmt ///////////////////////-->
-    <select id="selCmt" resultType="CmtDomain">
-        SELECT A.*, COUNT(A.icmt) - 1 AS isMore
-        FROM (
-                 SELECT
-                     A.icmt, A.cmt, A.regdate, A.iboard
-                      , B.iuser, B.nm as writer, B.mainProfile as writerProfile
-                 FROM t_matzip_cmt A
-                          INNER JOIN t_user B
-                                     ON A.iuser = B.iuser
-                 WHERE A.iboard = ${iboard}
-                 ORDER BY icmt ASC
-                     LIMIT 2
-             ) A
-        GROUP BY A.iboard
-    </select>
-
     <select id="selCmtList" resultType="CmtDomain">
         SELECT A.*, B.nm as writer
         FROM t_matzip_cmt A
@@ -65,6 +49,11 @@
         VALUES
             ( ${iboard}, ${iuser}, #{cmt} )
     </insert>
+
+    <delete id="delCmt">
+        delete from cmt_table
+        where iuser=${iuser} and icmt=${icmt}
+    </delete>
 
     <!--///////////////fav/////////////////-->
     <insert id="insFav">
@@ -93,7 +82,13 @@
         INSERT INTO t_matzip_rev(iboard, iuser, irev, dt, memberct)
         VALUES(#{iboard}, #{iuser}, #{irev}, #{dt}, #{memberct})
     </insert>
-    <select id="selRsv" resultType="RsvEntity">
+
+    <delete id="delRsv">
+        DELETE FROM t_matzip_rev
+        WHERE iboard=#{iboard} AND iuser=#{iuser}
+    </delete>
+
+    <select id="selRsvList" resultType="RsvEntity">
         SELECT A.dt, A.memberct, B.rsnm
         FROM t_matzip_rev A
         INNER JOIN t_matzip B

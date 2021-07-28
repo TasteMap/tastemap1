@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Scanner;
 
 @Controller
 @RequestMapping("/board")
@@ -58,7 +57,7 @@ public class BoardController {
             }
             list = service.selBoardRsc(param);
         } else {
-            System.out.println("안되뮤ㅠ");
+            System.out.println("ㅠ");
         }
         // System.out.println("list : " + list.toString());
         // System.out.println("list[0] : " + list.get(0));
@@ -68,7 +67,7 @@ public class BoardController {
     }
 
     @GetMapping("/detail")
-    public String detail(@RequestParam(value="iboard") int iboard, Model model){
+    public String detail(@RequestParam(value="iboard") int iboard, Model model, RsvEntity rsvEntity){
         model.addAttribute("boardEntity", service.selBoard(iboard));
         return "board/detail";
     }
@@ -77,16 +76,20 @@ public class BoardController {
   //  public CmtEntity insCmt(CmtEntity param){
   //      return service.insCmt();//    }
 
-    @ResponseBody
     @GetMapping("/cmt")
-    public List<CmtDomain> cmtList(@RequestParam("iboard") int iboard){
-        List<CmtDomain> cmtList = service.selCmtList();
-        return cmtList;
+    public List<CmtDomain> cmtList(CmtEntity param){
+        return service.selCmtList();
     }
 
-//    @PostMapping("/rsv")
-//    public String rsv(@RequestParam(value = "iboard") int iboard, Model model){
-//        model.addAttribute("rsvEntity", service.insRsv(iboard);
-//
-//    }
+    @GetMapping("/rsv")
+    public String rsvList(@RequestParam(value = "iuser") int iuser, Model model){
+        model.addAttribute("rsvEntity", service.selRsvList(iuser));
+        return "user/mypage";
+    }
+
+    @PostMapping("/rsv")
+    public String rsv(@RequestParam(value = "rsvEntity") RsvEntity rsvEntity, Model model){
+        model.addAttribute("rsvEntity", service.insRsv(rsvEntity));
+        return "board/detail";
+    }
 }
