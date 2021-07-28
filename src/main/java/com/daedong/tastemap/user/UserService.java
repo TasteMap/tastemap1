@@ -5,10 +5,16 @@ import com.daedong.tastemap.common.MySecurityUtils;
 import com.daedong.tastemap.security.IAuthenticationFacade;
 import com.daedong.tastemap.security.model.UserDetailsServiceImpl;
 import com.daedong.tastemap.user.model.UserEntity;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 
 @Service
@@ -27,6 +33,9 @@ public class UserService{
 
     @Autowired
     private UserDetailsServiceImpl userDetailService;
+
+    @Autowired
+    private IAuthenticationFacade auth;
 
     public int join(UserEntity param){
         String authCd = secUtils.getRandomDigit(5);
@@ -59,5 +68,40 @@ public class UserService{
         return 1;
 
     }
+
+    public String uploadProfile(MultipartFile img){
+        UserEntity loginUser = auth.getLoginUser();
+        final String PATH = "C:/springImg/" + loginUser.getIuser();
+
+        File folder = new File(PATH);
+        folder.mkdirs();
+
+        String ext = FilenameUtils.getExtension(img.getOriginalFilename());
+        String fileNm = UUID.randomUUID().toString() + "." + ext;
+
+        File target = new File(PATH + "/" + fileNm);
+        try {
+            img.transferTo(target);
+
+            //이전 이미지 삭제
+            File delFile = new File(PATH + "/" + loginUser.getProfileImg());
+            if(delFile.exists()){
+                delFile.delete();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        UserEntity param = new UserEntity();
+        param.setIuser(loginUser.getIuser());
+        param.setProfileImg(fileNm);
+
+        mapper.updUser(param);
+
+        loginUser.setProfileImg(fileNm);
+
+        return "/user/mypage";
+    }
+
 }
 
