@@ -88,8 +88,8 @@ public class BoardController {
     }
 
     @PostMapping("/rsv")
-    public String rsv(@RequestParam(value = "rsvEntity") RsvEntity rsvEntity, Model model){
+    public String rsv(RsvEntity rsvEntity, Model model){
         model.addAttribute("rsvEntity", service.insRsv(rsvEntity));
-        return "board/detail";
+        return "redirect:/board/detail?iboard=" + rsvEntity.getIboard();
     }
 }

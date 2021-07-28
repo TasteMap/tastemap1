@@ -33,6 +33,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             chkUser = user;
         }
         CustomUserPrincipal loginUser = new CustomUserPrincipal(chkUser, attributes);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(loginUser);
         return loginUser;
     }
     private UserEntity convertOauthToUserEntity(OAuth2UserInfo userInfo) {
