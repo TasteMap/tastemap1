@@ -17,10 +17,14 @@
   <div id="flexContainer">
     <form th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
       <div>
-        <img th:src="@{/pic/{iuser}/{img}(iuser=${profile.iuser}, img=${profile.profileImg})}">
+        <th:block th:if="${profile.profileImg == null}">
+          <img th:src="@{/img/noprofile.jpg}">
+        </th:block>
+        <th:block th:unless="${profile.profileImg == null}">
+          <img th:src="@{/pic/{iuser}/{img}(iuser=${profile.iuser}, img=${profile.profileImg})}">
+        </th:block>
       </div>
-
-      <div>
+      <div class="upload">
         이미지 : <input type="file" id="img" name="img" multiple accept="image/*">
         <input type="submit" value="업로드">
       </div>

@@ -35,10 +35,13 @@ img {
     object-fit: cover;
 }
 
+.upload{
+    margin-top: 20px;
+}
+
 table{
     margin-left: 30px;
 }
-
 
 /*section{*/
 /*    display: grid;*/
