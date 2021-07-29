@@ -4,6 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="basicLayout">
 
+<link rel="stylesheet" href="../../static/css/main/home.css">
 <th:block layout:fragment="css">
     <link rel="stylesheet" th:href="@{/css/main/home.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
@@ -12,6 +13,7 @@
 
 <th:block layout:fragment="js">
     <script defer th:src="@{/js/main/home.js}"></script>
+    <script defer th:src="@{/js/common.js}"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -22,6 +24,58 @@
 </th:block>
 
 <th:block layout:fragment="content">
+    <div class="bg"></div>
+    <div id="login">
+        <form class="login_form" th:action="@{home}" method="post" th:object="${userEntity}">
+            <h1>Log-in</h1>
+            <div class="login_sns">
+                <li><a th:href="@{/oauth2/authorization/kakao}"><img src="data:image/svg+xml;base64,PHN2ZyBpZD0icmVndWxhciIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTEyIDBjLTYuNjY3IDAtMTAuNjg2IDQuMTEtMTEuNzA5IDguMTgzLTEuMDYyIDQuMjI0Ljc5MyA4LjI3MSA0Ljg1NSAxMC42ODktLjkwMyAzLjI3Ni0xLjQ1IDQuMzc2LS41ODcgNC45NjUuOTY4LjY2MiAyLjM2Mi0uNzA3IDQuNjkxLTIuNDk0bC45NTctLjczM2MzLjc0OS40ODYgNy41NjgtLjU5MyAxMC4yNzItMi45MTMgMi4yNy0xLjk0OCAzLjUyLTQuNTUzIDMuNTItNy4zMzQuMDAxLTUuNzE1LTUuMzgyLTEwLjM2My0xMS45OTktMTAuMzYzem03LjUwNCAxNi41NThjLTIuNDU0IDIuMTA2LTUuOTY1IDMuMDQ5LTkuMzg4IDIuNTI0LS40NzktLjA3Ny0yLjU5MiAxLjc3My00LjMxMiAyLjk3MS4xOTQtLjczNS41NzQtMS45NzIuOTQzLTMuMzUzLjA5LS4zMzYtLjA2My0uNjktLjM3LS44NTQtNC41MjctMi40MzEtNS4zNjItNi4zOTYtNC42MzMtOS4yOTcuODg0LTMuNTA4IDQuMzk3LTcuMDQ5IDEwLjI1Ni03LjA0OSA1Ljc5IDAgMTAuNSAzLjk3NiAxMC41IDguODYyIDAgMi4zMzgtMS4wNjQgNC41MzgtMi45OTYgNi4xOTZ6Ii8+PHBhdGggZD0ibTYuNSA3Ljc1aC0zYy0uOTkyIDAtLjk5MyAxLjUgMCAxLjVoLjc1djQuMjVjMCAuOTkyIDEuNS45OTMgMS41IDB2LTQuMjVoLjc1Yy45OTIgMCAuOTkzLTEuNSAwLTEuNXoiLz48cGF0aCBkPSJtMTAuMTk2IDguMjIyYy0uMDAxLS4wMDMtLjAwNC0uMDA0LS4wMDUtLjAwNy0uMjQ2LS41OTUtMS4xMjYtLjYyMy0xLjM4MyAwLS4wMDEuMDAyLS4wMDMuMDA0LS4wMDQuMDA3bC0yIDVjLS4xNTQuMzg0LjAzMy44MjEuNDE4Ljk3NS45NTguMzg2IDEuMTI5LS45NzEgMS4zODYtMS40NDZoMS43ODVsLjQxMSAxLjAyOGMuMzY3LjkyIDEuNzY0LjM2NyAxLjM5My0uNTU3em0tLjk4OCAzLjAyOC4yOTItLjczMS4yOTIuNzMxeiIvPjxwYXRoIGQ9Im0xNS41IDEyLjc1aC0xLjI1di00LjI1YzAtLjk5Mi0xLjUtLjk5My0xLjUgMHY1YzAgLjQxNC4zMzYuNzUuNzUuNzVoMmMuOTkyIDAgLjk5My0xLjUgMC0xLjV6Ii8+PHBhdGggZD0ibTE4LjI1IDkuNjg5di0xLjE4OWMwLS45OTItMS41LS45OTMtMS41IDB2NWMwIC45OTIgMS41Ljk5MyAxLjUgMHYtMS40NjljMS42MDUgMS43NDYgMS42NTcgMi4yMTkgMi4yNSAyLjIxOS42MyAwIC45OTEtLjc0Ny41NjktMS4yMzlsLTEuODU3LTIuMTYzIDEuODIzLTEuODIzYy4wMDItLjAwMy4wMDUtLjAwNS4wMDctLjAwOC4wMDEtLjAwMS4wMDItLjAwMi4wMDMtLjAwMy42ODEtLjcwNi0uMzczLTEuNzQ3LTEuMDctMS4wNXoiLz48L3N2Zz4="
+                                    width="25px" hight="25px"></a></li>
+                <li><a th:href="@{/oauth2/authorization/facebook}"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a th:href="@{/oauth2/authorization/google}"><i class="fab fa-google"></i></a></li>
+            </div>
+            <div class="login_id">
+                <h4>ID</h4>
+                <input type="email" th:field="*{email}" placeholder="email" autofocus required>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <input type="password" th:field="*{pw}" placeholder="Password" required>
+            </div>
+            <div class="submit">
+                <input type="submit" value="submit">
+            </div>
+        </form>
+    </div>
+    <div id="join">
+        <form id="frm" th:action="@{/user/join}" method="post" th:object="${userEntity}" onsubmit="return frmChk();">
+            <h1>Join</h1>
+            <div class="section">
+                <div>ID</div>
+                <input type="email" th:field="*{email}" placeholder="email" required>
+                <button id="idCheckBtn" type="button">Check</button>
+            </div>
+            <div class="section">
+                <div>Password</div>
+                <input type="password" th:field="*{pw}" placeholder="Password" required>
+            </div>
+            <div class="section">
+                <div>Password Check</div>
+                <input type="password" id="chkUpw" placeholder="Password" required>
+            </div>
+            <div class="section">
+                <div>Name</div>
+                <input type="text" th:field="*{nm}" placeholder="Name" required>
+            </div>
+            <div class="section">
+                <div>Tel</div>
+                <input type="tel" th:field="*{tel}" placeholder="xxx-xxxx-xxxx" required>
+            </div>
+            <button id="joinBtn">
+                JOIN US!
+            </button>
+        </form>
+    </div>
     <!--오늘뭐먹지 & 이미지-->
     <div id="wrap">
         <div id="title_back">
@@ -56,21 +110,18 @@
 
     <section>
         <!--지도-->
-        <h1>SearchMAP_API</h1>
-        <button id="fadeToggleBtn">Click! 전국 맛집 검색</button>
+        <button id="fadeToggleBtn">맛집이 궁금해? 클릭!</button>
         <div id="divBox">
             <br>
             <div class="map_wrap">
-                <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                <div id="map" style="background-color:tomato;width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
                 <div id="menu_wrap" class="bg_white">
-                    <div class="option">
-                        <div>
-                            <form onsubmit="searchPlaces(); return false;">
-                                키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
-                                <button type="submit">검색하기</button>
-                            </form>
-                        </div>
+                    <div class="search">
+                        <form onsubmit="searchPlaces(); return false;">
+                            <input type="text" placeholder="이태원 맛집" id="keyword" size="15">
+                            <button class="map_btn" type="submit">검색</button>
+                        </form>
                     </div>
                     <hr>
                     <ul id="placesList"></ul>
@@ -81,25 +132,25 @@
 
         <!-- 칸칸이 -->
         <div id="grid">
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
-            <div class="box"><img src="https://img.hankyung.com/photo/202010/01.24004143.1.jpg"></div>
+            <div class="box"><a href="/board/list?rs=0">중구</a></div>
+            <div class="box"><a href="/board/list?rs=1">수성구</a></div>
+            <div class="box"><a href="/board/list?rs=2">동구</a></div>
+            <div class="box"><a href="/board/list?rs=3">서구</a></div>
+            <div class="box"><a href="/board/list?rs=4">남구</a></div>
+            <div class="box"><a href="/board/list?rs=5">북구</a></div>
+            <div class="box"><a href="/board/list?rs=6">달서구</a></div>
+            <div class="box"><a href="/board/list?rs=7">달성군</a></div>
         </div>
 
         <!-- 슬라이드 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"></div>
-                <div class="swiper-slide"><img src="https://lp-cms-production.imgix.net/2021-06/Italy%20pasta.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1"></div>
-                <div class="swiper-slide"><img src="https://www.matsuhisarestaurants.com/wp-content/uploads/2019/01/blur-bokeh-close-up-1148086.jpg"></div>
-                <div class="swiper-slide"><img src="https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"></div>
-                <div class="swiper-slide"><img src="https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"></div>
-                <div class="swiper-slide"><img src="https://media.timeout.com/images/103262962/1024/576/image.jpg"></div>
+                <div class="swiper-slide"><a href="/board/list?rs=8">한식</a></div>
+                <div class="swiper-slide"><a href="/board/list?rs=9">양식</a></div>
+                <div class="swiper-slide"><a href="/board/list?rs=10">일식</a></div>
+                <div class="swiper-slide"><a href="/board/list?rs=11">중식</a></div>
+                <div class="swiper-slide"><a href="/board/list?rs=12">동남아식</a></div>
+                <div class="swiper-slide"><a href="/board/list?rs=13">분식</a></div>
             </div>
 
             <!-- 네비게이션 -->

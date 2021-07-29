@@ -1,8 +1,14 @@
 package com.daedong.tastemap.user.model;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 
-@Data
+@Getter
+@Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
     private int iuser;
     private String email;
@@ -11,5 +17,8 @@ public class UserEntity {
     private String tel;
     private String authCd;
     private String regdt;
-    private String mainProfile;
+    private String profileImg;
+    private String provider;
+
 }
+

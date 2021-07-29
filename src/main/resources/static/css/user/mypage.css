@@ -1,26 +1,82 @@
-section {
-    margin-top: 70px;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    height: calc(100% - 70px);
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@font-face {/*티웨이하늘-제목*/
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-section>div{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 5%;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    height: calc(100% - 80px);
+@font-face {/*티웨이항공-내용*/
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-#img{background-color: tomato;}
-#info{
-    background-color: darkcyan;
-    grid-column: 2 / 4;
+li{list-style: none;}
+a{text-decoration: none;}
+
+body{
+    padding-top: 100px;
+    overflow: hidden;
 }
-#map{background-color: lavenderblush;}
-#scrap{background-color: yellow;}
-#rev{background-color: indianred;}
+
+#flexContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+img {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.upload{
+    margin-top: 20px;
+}
+
+table{
+    margin-left: 30px;
+}
+
+/*section{*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr 1fr;*/
+/*    grid-template-rowsrow: 1fr 1fr;*/
+/*    gap: 5%;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 80%;*/
+/*    height: calc(100% - 100px);*/
+/*    !*margin: 20px auto 0 auto;*!*/
+/*}*/
+
+/*section > div{*/
+/*    width: calc(100% - 10px);*/
+/*    height: calc(100% - 10px);*/
+/*}*/
+
+/*#img{background-color: tomato;*/
+/*    height: 70%;*/
+/*    width: 65%;*/
+/*    position: relative;*/
+/*    left: 10%;*/
+/*    border-radius: 70%;*/
+/*    padding-left: 5%;*/
+/*    !*grid-row: 1fr 1fr;*!*/
+/*}*/
+/*#info{*/
+/*    background-color: darkcyan;*/
+/*    grid-column: 2 / 4;*/
+/*    height: 70%;*/
+/*}*/
+/*#map{background-color: lavenderblush;*/
+/*    height: 70%;}*/
+/*#scrap{background-color: yellow;*/
+/*    height: 70%;}*/
+/*#rev{background-color: indianred;*/
+/*    height: 70%;}*/

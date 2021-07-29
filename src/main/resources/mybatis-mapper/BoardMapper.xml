@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.daedong.tastemap.board.BoardMapper">
+    <sql id="list">
+        SELECT A.rsnm, A.iboard, A.rsad
+             ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+        FROM t_matzip A
+    </sql>
+
+    <select id="selBoardRsad" resultType="BoardDomain">
+        <include refid="list"/>
+        WHERE A.rsad = #{rsad} LIKE CONCAT('대구광역시 ', #{rsad}, '%')
+    </select>
+
+    <select id="selBoardRsc" resultType="BoardDomain">
+        <include refid="list"/>
+        WHERE A.rsc = #{rsc}
+    </select>
+
+    <!-- <select id="selBoardList" resultType="BoardEntity">
+        SELECT A.rsnm, A.iboard
+        ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+        FROM t_matzip A WHERE iboard = #{iboard}
+       -DB : t_matzip, t_matzip_fav
+    </select>-->
+
+    <!-- ////////////// DETAIL ///////////////-->
+    <select id="selBoard" resultType="BoardDomain">
+        SELECT *,
+        (SELECT COUNT(*) FROM t_matzip_fav WHERE iboard = #{iboard}) as favCnt
+        FROM t_matzip
+        WHERE iboard = #{iboard}
+    </select>
+
+    <!-- //////////////////////////// cmt ///////////////////////-->
+    <select id="selCmtList" resultType="CmtDomain">
+        SELECT A.*, B.nm as writer
+        FROM t_matzip_cmt A
+        INNER JOIN t_user B
+        ON A.iuser = B.iuser
+        WHERE iboard = #{iboard}
+    </select>
+
+    <insert id="insCmt">
+        INSERT INTO t_matzip_cmt
+            ( iboard, iuser, cmt )
+        VALUES
+            ( ${iboard}, ${iuser}, #{cmt} )
+    </insert>
+
+    <delete id="delCmt">
+        delete from cmt_table
+        where iuser=${iuser} and icmt=${icmt}
+    </delete>
+
+    <!--///////////////fav/////////////////-->
+    <insert id="insFav">
+        INSERT INTO t_matzip_fav(iboard, iuser)
+        VALUES(#{iboard}, #{iuser})
+    </insert>
+    <select id="selFav" resultType="BoardDomain">
+        SELECT count(*) as favCnt
+        FROM t_matzip_fav
+        WHERE iboard = #{iboard}
+    </select>
+    <select id="selFavList" resultType="BoardDomain">
+        SELECT B.rsnm
+        FROM t_matzip_fav A
+        INNER JOIN t_matzip B
+        ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
+    <delete id="delFav">
+        DELETE FROM t_matzip_fav
+        WHERE iboard=#{iboard} AND iuser=#{iuser}
+    </delete>
+
+    <!--/////////////////rsv///////////////////-->
+    <insert id="insRsv">
+        INSERT INTO t_matzip_rev(iboard, iuser, irev, dt, memberct)
+        VALUES(#{iboard}, #{iuser}, #{irev}, #{dt}, #{memberct})
+    </insert>
+
+    <delete id="delRsv">
+        DELETE FROM t_matzip_rev
+        WHERE iboard=#{iboard} AND iuser=#{iuser}
+    </delete>
+
+    <select id="selRsvList" resultType="RsvEntity">
+        SELECT A.dt, A.memberct, B.rsnm
+        FROM t_matzip_rev A
+        INNER JOIN t_matzip B
+        ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
+</mapper>

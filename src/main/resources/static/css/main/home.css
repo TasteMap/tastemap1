@@ -1,4 +1,205 @@
 
+/*로그인 모달 css*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+#login {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    width: 27%;
+    height: 550px;
+    /*padding-bottom: 100px;*/
+    border-radius: 5%;
+    background-color: rgb(238, 230, 211);
+    margin: 0 auto;
+    z-index: 9999;
+}
+
+.login_form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 450px;
+}
+
+h1{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: tomato;
+}
+
+
+.login_sns {
+    padding: 20px;
+    display: flex;
+}
+
+.login_sns li {
+    padding: 0px 15px;
+    width: 73px;
+    height: 50px;
+}
+
+.login_sns a {
+    display: grid;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    background: white;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login_id {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.login_id input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.login_pw {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.login_pw input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.submit {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.submit input {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+/*join*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+#join {
+    display: none;
+    position: fixed;
+    top: 3%;
+    left: 35%;
+    width: 30%;
+    height: 650px;
+    padding-bottom: 50px;
+    border-radius: 5%;
+    background-color: rgb(238, 230, 211);
+    margin: 0 auto;
+    z-index: 9999;
+}
+h1 {
+    display: block;
+    padding-top: 5%;
+    color: tomato;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.section {
+    position: relative;
+    width: 60%;
+    margin: 12px auto;
+}
+.section > div {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.section > input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 5px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+    font-size: 1rem;
+}
+
+#idCheckBtn {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    width: 20%;
+    height: 30px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+#joinBtn {
+    width: 60%;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20%;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
 /*오늘뭐먹지 & 타이틀 이미지*/
 #title_back{
     position: relative;
@@ -10,7 +211,7 @@
 #img {
     width: 100%;
     height: 100%;
-    background-image: url('https://ifh.cc/g/U1abpY.jpg');
+    background-image: url(/img/background.jpg);
     background-size: cover;
 }
 
@@ -39,7 +240,7 @@
 .bg{
     display: none;
     position: fixed;
-    top: 0;
+    top: 0%;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -50,10 +251,10 @@
 #rl {
     display: none;
     position: fixed;
-    top: 3%;
+    top: 5%;
     left: 25%;
     width: 50%;
-    height: 80%;
+    height: 90%;
     padding-bottom: 100px;
     border-radius: 5%;
     background-color: rgb(238, 230, 211);
@@ -153,13 +354,21 @@ button{border:0;margin:0;padding:0;}
     color:tomato;
 }
 
+@media screen and (max-width: 1150px) {
+    #rl {
+        width: 567px;
+        height: 570px;
+        left: calc(50vw - 283px);
+    }
+}
+
 /* 검색지도 */
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'twayair';font-size:1rem;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
+.bg_white {background:rgb(238, 230, 211);}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
 #menu_wrap .option p {margin:10px 0;}
@@ -194,15 +403,15 @@ button{border:0;margin:0;padding:0;}
 
 #fadeToggleBtn {
     box-shadow:inset 0px 1px 0px 0px #f9eca0;
-    background:linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
-    background-color:#f0c911;
+    background:linear-gradient(to bottom, #FFDB5C 5%, #F9A603 100%);
+    background-color:#F9ba3e;
     border-radius:6px;
-    border:1px solid #e65f44;
+    /* box-shadow: inset 5em 1em #F8A055; */
     display:inline-block;
     cursor:pointer;
-    color:#c92200;
-    font-family:Arial;
-    font-size:15px;
+    color: #426e86;
+    font-family:'twayair';
+    font-size:2rem;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;
@@ -219,6 +428,33 @@ button{border:0;margin:0;padding:0;}
     top:1px;
 }
 
+.search{
+    padding-top: 2%;
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+.search #keyword{
+    position: absolute;
+    top: 40%;
+    left: 2%;
+    border-radius: 0.5rem;
+    width: 95%;
+    height: 52%;
+    justify-content: center;
+    align-items: center;
+}
+.search .map_btn{
+    position: absolute;
+    border-radius: 0.5rem;
+    width: 25%;
+    height: 43%;
+    top: 45%;
+    right: 3%;
+    background-color: #F2c057;
+    border: 1px solid #F2c057;
+}
+
 /*칸칸이*/
 #grid {
     display: grid;
@@ -231,18 +467,51 @@ button{border:0;margin:0;padding:0;}
     height: 700px;
 }
 section{margin: 40px; height: auto;}
+
 #grid>div{
+    box-shadow: 5px 5px 10px rgb(111, 111, 111);
     width: 100%;
     height: 100%;
     background-color: aliceblue;
-    border: 1px solid black;
-    box-shadow: rgba(0,0,0,0.3);
+    border-radius: 2%;
+    text-align: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-#grid > div > img{
+
+/*#grid > div > img{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*}*/
+
+#grid .box > a{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    font-family: 'twaysky';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(231, 172, 61);
+    text-shadow: 5px 5px 10px rgb(111, 111, 111);
 }
+
+#grid .box> a:hover{
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+.box:first-child { background-image: url("https://img.hankyung.com/photo/202010/01.24004143.1.jpg"); background-size: cover; }
+.box:nth-child(2) { background-image: url("https://storage1.ilyo.co.kr/contents/article/images/2015/0105/1420458276656118.jpg"); background-size: cover; }
+.box:nth-child(3) { background-image: url("https://www.kyongbuk.co.kr/news/photo/202004/2037628_450570_5706.jpg"); background-size: cover; }
+.box:nth-child(4) { background-image: url("https://cdn.dtnews24.com/news/photo/201711/123673_439790.jpg"); background-size: cover; }
+.box:nth-child(5) { background-image: url("https://i0.wp.com/blog.allstay.com/wp-content/uploads/2019/06/photo01-1.jpg?w=760&ssl=1"); background-size: cover; }
+.box:nth-child(6) { background-image: url("https://www.newgbnews.com/news/photo/202103/227389_34647_1314.jpg"); background-size: cover; }
+.box:nth-child(7) { background-image: url("http://ojsfile.ohmynews.com/STD_IMG_FILE/2017/0226/IE002116276_STD.jpg"); background-size: cover; }
+.box:last-child { background-image: url("http://www.daeguview.com/DATA/photo/thumb_b_20190909051030.jpg"); background-size: cover; }
+
 
 /*슬라이드*/
 .swiper-container {
@@ -253,13 +522,29 @@ section{margin: 40px; height: auto;}
 .swiper-wrapper{
     height:100%;
 }
-.swiper-slide {
+.swiper-slide > a {
     text-align:center;
     display:flex;
     align-items:center;
     justify-content:center;
     height: 100%;
+    font-family: 'twaysky';
+    font-size: 3rem;
+    color: tomato;
+    text-shadow: 5px 5px 10px rgb(111, 111, 111);
 }
+
+.swiper-slide > a:hover{
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+.swiper-slide:first-child{background-image: url("https://newsimg.hankookilbo.com/cms/articlerelease/2020/07/13/0fcdbd8b-13aa-4436-8804-8f911090eb24.jpg"); background-size: cover;}
+.swiper-slide:nth-child(2){background-image: url("https://www.dolomiticlass.it/storage/property/services/513/conversions/Piatto_gourmet_My_Arbor_Hotel_Bressanone_01-desktop.jpg"); background-size: cover;}
+.swiper-slide:nth-child(3){background-image: url("https://rachelgouk.com/wp-content/uploads/2019/07/sushi-naoki-japanese-restaurant-shanghai.jpg"); background-size: cover;}
+.swiper-slide:nth-child(4){background-image: url("https://koreajoongangdaily.joins.com/jmnet/koreajoongangdaily/_data/photo/2019/03/31184114.jpg"); background-size: cover;}
+.swiper-slide:nth-child(5){background-image: url("https://i2.wp.com/en.blog.kkday.com/wp-content/uploads/batch_Vietnam_pho_AShutterstock_650070463.jpg?w=900&ssl=1"); background-size: cover;}
+.swiper-slide:last-child{background-image: url("https://livingnomads.com/wp-content/uploads/2018/08/03/Street-Food-Stall-in-seoul.jpg"); background-size: cover;}
+
 .swiper-slide img {
     box-shadow:0 0 5px #555;
     max-width:100%;
@@ -306,10 +591,6 @@ footer{
 }
 
 
-@media screen and (max-width: 1150px) {
-    #rl {
-        width: 567px;
-        height: 570px;
-        left: calc(50vw - 283px);
-    }
-}
+
+
+

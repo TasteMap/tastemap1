@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@font-face {/*티웨이하늘-제목*/
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {/*티웨이항공-내용*/
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+li{list-style: none;}
+a{text-decoration: none;}
+
+section{
+    position: relative;
+    top: 80px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 100px);
+    /*margin: 20px auto 0 auto;*/
+    overflow: hidden;
+    grid-template-columns: 0.5fr;
+}
+
+/*section > div{*/
+/*    width: calc(100% - 10px);*/
+/*    height: calc(100% - 10px);*/
+/*}*/
+
+#res{
+    height: 100%;
+    width: 100%;
+}
+#res .title{
+    background-color: beige;
+    height: 10%;
+}
+#res .rsad{
+    background-color: #ded17c;
+    height: 5%;
+}
+#res .fav{
+    background-color: burlywood;
+    height: 5%;
+}
+#rsv{
+    background-color: blanchedalmond;
+    height: 5%;
+}
+#rv{
+    background-color: indianred;
+    height: 60%;
+}
+.text{
+    background-color: cadetblue;
+    height: 15%;
+}

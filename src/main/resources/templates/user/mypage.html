@@ -3,22 +3,51 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="basicLayout">
+<head><title>프로필</title></head>
 
-  <th:block layout:fragment="css">
-    <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
-  </th:block>
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+</th:block>
 
-  <th:block layout:fragment="js">
+<th:block layout:fragment="js">
+  <script defer th:src="@{/js/user/mypage.js}"></script>
+</th:block>
 
-  </th:block>
-
-  <th:block layout:fragment="content">
+<th:block layout:fragment="content" th:with="profile=${#authentication.getPrincipal().getUser()}">
+  <div id="flexContainer">
+    <form th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
       <div>
-        <div id="img">profile image</div>
-        <div id="info">personal info</div>
-        <div id="map">map</div>
-        <div id="scrap">scrap</div>
-        <div id="rev">reservation</div>
+        <th:block th:if="${profile.profileImg == null}">
+          <img th:src="@{/img/noprofile.jpg}">
+        </th:block>
+        <th:block th:unless="${profile.profileImg == null}">
+          <img th:src="@{/pic/{iuser}/{img}(iuser=${profile.iuser}, img=${profile.profileImg})}">
+        </th:block>
       </div>
-  </th:block>
+      <div class="upload">
+        이미지 : <input type="file" id="img" name="img" multiple accept="image/*">
+        <input type="submit" value="업로드">
+      </div>
+    </form>
+    <table>
+      <tr>
+        <th>email</th>
+        <td th:text="${profile.email}"></td>
+      </tr>
+      <tr>
+        <th>name</th>
+        <td th:text="${profile.nm}"></td>
+      </tr>
+      <tr>
+        <th>tel</th>
+        <td th:text="${profile.tel}"></td>
+      </tr>
+      <tr>
+        <th>reg date</th>
+        <td th:text="${profile.regdt}"></td>
+      </tr>
+    </table>
+  </div>
+
+</th:block>
 </html>

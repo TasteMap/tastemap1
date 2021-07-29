@@ -6,3 +6,4 @@ public interface IAuthenticationFacade {
     UserEntity getLoginUser();
     int getLoginUserPk();
 }
+
