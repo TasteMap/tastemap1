@@ -1,6 +1,7 @@
 package com.daedong.tastemap.board;
 
 import com.daedong.tastemap.board.model.*;
+import com.daedong.tastemap.user.model.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface BoardMapper {
     List<CmtDomain> selCmtList();
     int insRsv(RsvEntity param);
     int delRsv(RsvEntity param);
-    List<RsvEntity> selRsvList(int iuser);
-
+//    List<RsvDTO> selRsvList(UserEntity param);
+    int insFav(FavEntity param);
+    BoardDomain selFav(BoardDomain param);
+    int delFav(FavEntity param);
 }

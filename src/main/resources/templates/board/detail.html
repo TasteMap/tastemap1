@@ -24,7 +24,7 @@
             <div class="title" th:text="${boardEntity.rsnm}">음식점:</div>
             <div class="rsad" th:text="${boardEntity.rsad}">주소:</div>
             <div id="map" style="width:100%;height:400px;"></div>
-            <div class="fav" th:text="${boardEntity.favCnt}">좋아요 수:</div>
+            <div class="fav" th:text="${boardDomain.favCnt}">좋아요 수:</div>
             <form id="rsv" method="post" th:action="@{/board/rsv}" th:object="${rsvEntity}" >
                 인원 수 : <input type="number" min="1" max="5" th:field="*{memberct}">
                 <input type="text" id="datepicker" th:field="*{dt}">

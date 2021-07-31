@@ -44,4 +44,19 @@
         WHERE iuser = #{iuser}
     </update>
 
+    <select id="selRsvList" resultType="RsvDTO">
+        SELECT A.dt, A.memberct, B.rsnm
+        FROM t_matzip_rev A
+                 INNER JOIN t_matzip B
+                    ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
+
+    <select id="selFavList" resultType="BoardDomain">
+        SELECT B.rsnm
+        FROM t_matzip_fav A
+                 INNER JOIN t_matzip B
+                            ON A.iboard = B.iboard
+        WHERE A.iuser = #{iuser}
+    </select>
 </mapper>

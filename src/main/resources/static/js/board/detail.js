@@ -64,3 +64,61 @@ geocoder.addressSearch(address, function(result, status) {
         map.setCenter(coords);
     }
 });
+
+
+//좋아요 여부 값 가져오기
+
+var favCntElem = document.querySelector(".fav");
+
+function getFavAjax() {
+    fetch('fav/' + favCntElem.dataset.iboard)
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function (myJson) {
+            toggleFav(myJson.result);
+        });
+}
+
+function toggleFav(toggle) {
+    switch(toggle) {
+        case 0: //좋아요 X
+            favIconElem.classList.remove('fas');
+            favIconElem.classList.add('far');
+            break;
+        case 1: //좋아요 O
+            favIconElem.classList.remove('far');
+            favIconElem.classList.add('fas');
+            break;
+    }
+}
+
+getFavAjax();
+
+
+//
+// const favCntSpan = document.createElement('span');
+// favCntSpan.innerText = item.favCnt;
+// favIcon.addEventListener('click', ()=> {
+//     item.isFav = 1 - item.isFav;
+//     fetch(`fav?iboard=${item.iboard}&type=${item.isFav}`)
+//         .then(res => res.json())
+//         .then(myJson => {
+//             if(myJson === 1) {
+//                 switch (item.isFav) {
+//                     case 0: //O > X
+//                         favIcon.classList.remove('fas');
+//                         favIcon.classList.add('far');
+//                         favCntSpan.innerText--;
+//                         break;
+//                     case 1: //X > O
+//                         favIcon.classList.remove('far');
+//                         favIcon.classList.add('fas');
+//                         favCntSpan.innerText++;
+//                         break;
+//                 }
+//             }
+//         });
+// });
+// favDiv.append(favIcon);
+// favDiv.append(favCntSpan);

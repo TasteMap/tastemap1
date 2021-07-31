@@ -1,12 +1,15 @@
 package com.daedong.tastemap.board;
 
 import com.daedong.tastemap.board.model.*;
+import com.daedong.tastemap.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/board")
@@ -67,29 +70,60 @@ public class BoardController {
     }
 
     @GetMapping("/detail")
-    public String detail(@RequestParam(value="iboard") int iboard, Model model, RsvEntity rsvEntity){
+    public String detail(@RequestParam(value="iboard") int iboard, Model model, RsvEntity rsvEntity, BoardDomain boardDomain){
         model.addAttribute("boardEntity", service.selBoard(iboard));
         return "board/detail";
     }
 
-  //  @GetMapping("/cmt")
-  //  public CmtEntity insCmt(CmtEntity param){
-  //      return service.insCmt();//    }
+    @PostMapping("/cmt")
+    public CmtEntity insCmt(CmtEntity param){
+        return service.insCmt();}
 
     @GetMapping("/cmt")
     public List<CmtDomain> cmtList(CmtEntity param){
         return service.selCmtList();
     }
 
-    @GetMapping("/rsv")
-    public String rsvList(@RequestParam(value = "iuser") int iuser, Model model){
-        model.addAttribute("rsvEntity", service.selRsvList(iuser));
-        return "user/mypage";
-    }
+//    @GetMapping("/rsv")
+//    public String rsvList(@RequestParam(value = "iuser") int iuser, Model model){
+//        UserEntity param = new UserEntity();
+//        param.setIuser(iuser);
+//        model.addAttribute("rsvDTO", service.selRsvList(param));
+//        return "user/mypage";
+//    }
 
     @PostMapping("/rsv")
     public String rsv(RsvEntity rsvEntity, Model model){
         model.addAttribute("rsvEntity", service.insRsv(rsvEntity));
         return "redirect:/board/detail?iboard=" + rsvEntity.getIboard();
+    }
+
+    @GetMapping("/fav")
+    public String selFav(BoardDomain boardDomain, @PathVariable int iboard, Model model) {
+        boardDomain.setIboard(iboard);
+        model.addAttribute("boardDomain", service.selFav(boardDomain));
+        return "board/detail";
+    }
+
+//    @ResponseBody
+//    @GetMapping("/fav")
+//    public int feedFavProc(FavEntity param, int type) { //type: 1 - ins(등록), 0 - del(취소)
+//        System.out.println(param);
+//        System.out.println("type: " + type);
+//        return service.feedFavProc(param, type);
+//    }
+
+    @ResponseBody
+    @PostMapping("/fav")
+    public String insFav(@RequestBody FavEntity favEntity, Model model) {
+        model.addAttribute("favEntity", service.insFav(favEntity));
+        return "board/list";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/fav")
+    public String delFav(FavEntity favEntity, Model model) {
+        model.addAttribute("favEntity", service.delFav(favEntity));
+        return "board/list";
     }
 }

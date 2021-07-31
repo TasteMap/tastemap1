@@ -48,6 +48,19 @@
       </tr>
     </table>
   </div>
-
+  <div id="btm">
+    <div id="favWrap">
+      <div class="favItem" th:each="item : ${boardDomain}">
+        <div class="rsnm" th:text="${item.rsnm}"></div>
+    </div>
+    </div>
+    <div id="rsvWrap">
+      <div class="rsvItem" th:each="item : ${rsvDTO}">
+        <div class="date" th:text="${item.dt}"></div>
+        <div class="memberct" th:text="${item.memberct}"></div>
+        <div class="rsnm" th:text="${item.rsnm}"></div>
+      </div>
+    </div>
+  </div>
 </th:block>
 </html>

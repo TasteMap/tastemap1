@@ -5,7 +5,7 @@
 
 
 <header th:fragment="header">
-    <div id="top">
+    <div id="top" >
         <div class="logo">
             <a th:href="@{/home}">
                 <svg width=300 height=70 viewBox="0 0 400 200">
@@ -24,8 +24,8 @@
             <li class="header_item" sec:authorize="isAnonymous()">
                 <div class="header_menulink"><span id="joinModal" class="menu_text">Join</span></div>
             </li>
-            <li class="header_item" sec:authorize="isAuthenticated()">
-                <a th:href="@{/user/mypage}"  class="header_menulink"><span class="menu_text">MyPage</span></a>
+            <li class="header_item" sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
+                <a th:href="@{/user/mypage(iuser=${auth.iuser})}" class="header_menulink"><span class="menu_text">MyPage</span></a>
             </li>
             <li class="header_item" sec:authorize="isAuthenticated()">
                 <a th:href="@{/user/logout}" class="header_menulink"><span class="menu_text">logout</span></a>

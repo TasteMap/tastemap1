@@ -42,6 +42,34 @@ img {
 table{
     margin-left: 30px;
 }
+#btm{
+    width: 100vw;
+    height: 60%;
+}
+#favWrap{
+    float: left;
+    width: 40%;
+    height: 70%;
+    background-color: yellow;
+}
+.favItem{
+    width: 100%;
+}
+.favItem > div {
+    height: 20px;
+}
+#rsvWrap {
+    float: right;
+    width: 40%;
+    height: 70%;
+    background-color: greenyellow;
+}
+.rsvItem {
+    width: 100%;
+}
+.rsvItem > div {
+    height: 20px;
+}
 
 /*section{*/
 /*    display: grid;*/
@@ -75,8 +103,4 @@ table{
 /*    height: 70%;*/
 /*}*/
 /*#map{background-color: lavenderblush;*/
-/*    height: 70%;}*/
-/*#scrap{background-color: yellow;*/
-/*    height: 70%;}*/
-/*#rev{background-color: indianred;*/
 /*    height: 70%;}*/

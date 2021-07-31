@@ -100,7 +100,16 @@ section{
     height: 50px;
     background-color: tomato;
 }
-
+.fav{
+    width: 50%;
+    height: 20px;
+}
+.fav #favIcon{
+    float: right;
+}
+.fav:hover{
+    color: chartreuse;
+}
 /*.img{*/
 /*    grid-row: 1 / 3;*/
 /*    grid-column: 1 / 2;*/
