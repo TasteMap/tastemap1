@@ -63,11 +63,11 @@
 
     <select id="selFav" resultType="BoardDomain">
     SELECT A.iboard, A.rsnm, A.rsc, A.rsad, IFNULL(B.iboard,0) AS isFav,
-               CASE WHEN A.rsad !=null THEN A.rsad = ${rsad}
-                WHEN (A.rsc !=null) THEN A.rsc = ${rsc} ELSE NULL END
-		FROM t_matzip A
-      LEFT JOIN t_matzip_fav B
-      ON A.iboard=B.iboard AND B.iuser=${iuser};
+    CASE WHEN A.rsad !=null THEN A.rsad = ${rsad}
+    WHEN (A.rsc !=null) THEN A.rsc = ${rsc} ELSE NULL END
+	FROM t_matzip A
+    LEFT JOIN t_matzip_fav B
+    ON A.iboard=B.iboard AND B.iuser=${iuser};
     </select>
 
 <!--    <select id="selFav" resultType="BoardDomain">-->

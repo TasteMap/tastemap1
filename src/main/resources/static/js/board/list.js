@@ -3,18 +3,31 @@ function moveToDetail(iboard){
 };
 
 //좋아요 영역
-var favElem = document.querySelector('.fav');
-var favIconElem = document.querySelector('#favIcon');
-favIconElem.addEventListener('click', function() {
+let favElem = document.querySelector('.fav');
+let favIconElem = document.querySelector('#favIcon');
+function event1(iboard){
+    console.log('dd');
     if(favIconElem.classList.contains('far')) { // X > O
-        insFavAjax();
-    } else { // O > X
-        delFavAjax();
-    }
-});
+        insFavAjax(iboard);
 
-function insFavAjax() {
-    const param = { iboard: favElem.dataset.iboard };
+    } else { // O > X
+        delFavAjax(iboard);
+    }
+}
+// favIconElem.addEventListener('click', function() {
+//     console.log('dd');
+//     if(favIconElem.classList.contains('far')) { // X > O
+//         insFavAjax();
+//
+//     } else { // O > X
+//         delFavAjax();
+//     }
+// });
+
+function insFavAjax(iboard) {
+
+    const param = {iboard};
+    console.log(param);
     const init = {
         method: 'POST',
         body: JSON.stringify(param),
@@ -28,18 +41,21 @@ function insFavAjax() {
             return res.json();
         })
         .then(function (myJson) {
-            if(myJson.result === 1) {
+            console.log(myJson);
+            if(myJson === 1) {
                 toggleFav(1);
+            }else{
+                alert('실패');
             }
         })
 }
 
 //좋아요 취소
-function delFavAjax() {
+function delFavAjax(iboard1) {
     const init = {
         method: 'DELETE'
     }
-    const iboard = favElem.dataset.iboard;
+    const iboard = iboard1;
 
     fetch('fav?iboard=' + iboard, init)
         .then(function(res) {

@@ -100,8 +100,10 @@ public class BoardController {
 
     @GetMapping("/fav")
     public String selFav(BoardDomain boardDomain, @PathVariable int iboard, Model model) {
+        System.out.println(boardDomain);
         boardDomain.setIboard(iboard);
         model.addAttribute("boardDomain", service.selFav(boardDomain));
+
         return "board/detail";
     }
 
@@ -115,9 +117,8 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/fav")
-    public String insFav(@RequestBody FavEntity favEntity, Model model) {
-        model.addAttribute("favEntity", service.insFav(favEntity));
-        return "board/list";
+    public int insFav(@RequestBody FavEntity favEntity) {
+        return service.insFav(favEntity);
     }
 
     @ResponseBody

@@ -65,7 +65,7 @@
                         <span th:text="${item.rsnm}"></span>
                     </div>
                     <div class="fav" sec:authorize="isAuthenticated()">
-                        <i id="favIcon" class="far fa-kiss-wink-heart pointer"></i>
+                        <i id="favIcon" th:onclick="|event1(${item.iboard})|" class="far fa-kiss-wink-heart pointer"></i>
                     </div>
 <!--                    <div class="menu" th:text="${item.rsad}">3</div>-->
                 </div>
