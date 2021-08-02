@@ -71,6 +71,10 @@ public class BoardController {
 
     @GetMapping("/detail")
     public String detail(@RequestParam(value="iboard") int iboard, Model model, RsvEntity rsvEntity, BoardDomain boardDomain){
+        BoardDomain param = new BoardDomain();
+        param.setIboard(iboard);
+        model.addAttribute("boardDomain", service.selFav(param));
+
         model.addAttribute("boardEntity", service.selBoard(iboard));
         return "board/detail";
     }
@@ -98,14 +102,13 @@ public class BoardController {
         return "redirect:/board/detail?iboard=" + rsvEntity.getIboard();
     }
 
-    @GetMapping("/fav")
-    public String selFav(BoardDomain boardDomain, @PathVariable int iboard, Model model) {
-        System.out.println(boardDomain);
-        boardDomain.setIboard(iboard);
-        model.addAttribute("boardDomain", service.selFav(boardDomain));
-
-        return "board/detail";
-    }
+//    @GetMapping("/fav/{iboard}")
+//    public String selFav(@PathVariable int iboard, Model model) {
+//        BoardDomain param = new BoardDomain();
+//        param.setIboard(iboard);
+//        model.addAttribute("boardDomain", service.selFav(param));
+//        return "board/detail";
+//    }
 
 //    @ResponseBody
 //    @GetMapping("/fav")

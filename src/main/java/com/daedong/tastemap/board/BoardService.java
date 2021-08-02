@@ -57,7 +57,6 @@ public class BoardService {
     }
 
     public BoardDomain selFav(BoardDomain param) {
-        param.setIuser(auth.getLoginUserPk());
         return mapper.selFav(param);
     }
 
