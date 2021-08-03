@@ -11,6 +11,17 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.bg{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+}
 * {
     box-sizing: border-box;
 }
@@ -169,6 +180,208 @@ text:nth-child(7) {
 #joinModal{
     cursor: pointer;
 }
+
+/*로그인 모달 css*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+#login {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    width: 27%;
+    height: 550px;
+    /*padding-bottom: 100px;*/
+    border-radius: 5%;
+    background-color: rgb(238, 230, 211);
+    margin: 0 auto;
+    z-index: 9999;
+}
+
+.login_form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 450px;
+}
+
+h1{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: tomato;
+}
+
+
+.login_sns {
+    padding: 20px;
+    display: flex;
+}
+
+.login_sns li {
+    padding: 0px 15px;
+    width: 73px;
+    height: 50px;
+}
+
+.login_sns a {
+    display: grid;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    background: white;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login_id {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.login_id input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.login_pw {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.login_pw input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.submit {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.submit input {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+/*join*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+#join {
+    display: none;
+    position: fixed;
+    top: 3%;
+    left: 35%;
+    width: 30%;
+    height: 650px;
+    padding-bottom: 50px;
+    border-radius: 5%;
+    background-color: rgb(238, 230, 211);
+    margin: 0 auto;
+    z-index: 9999;
+}
+h1 {
+    display: block;
+    padding-top: 5%;
+    color: tomato;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.section {
+    position: relative;
+    width: 60%;
+    margin: 12px auto;
+}
+.section > div {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.section > input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 5px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+    font-size: 1rem;
+}
+
+#idCheckBtn {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    width: 20%;
+    height: 30px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+#joinBtn {
+    width: 60%;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20%;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
 
 
 

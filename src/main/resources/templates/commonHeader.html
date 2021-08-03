@@ -3,6 +3,63 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<div th:fragment="loginModal">
+    <div class="bg"></div>
+    <div class="close_btn"></div>
+    <div id="login">
+        <form class="login_form" th:action="@{home}" method="post">
+            <h1>Log-in</h1>
+            <div class="login_sns">
+                <li><a th:href="@{/oauth2/authorization/kakao}"><img src="data:image/svg+xml;base64,PHN2ZyBpZD0icmVndWxhciIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTEyIDBjLTYuNjY3IDAtMTAuNjg2IDQuMTEtMTEuNzA5IDguMTgzLTEuMDYyIDQuMjI0Ljc5MyA4LjI3MSA0Ljg1NSAxMC42ODktLjkwMyAzLjI3Ni0xLjQ1IDQuMzc2LS41ODcgNC45NjUuOTY4LjY2MiAyLjM2Mi0uNzA3IDQuNjkxLTIuNDk0bC45NTctLjczM2MzLjc0OS40ODYgNy41NjgtLjU5MyAxMC4yNzItMi45MTMgMi4yNy0xLjk0OCAzLjUyLTQuNTUzIDMuNTItNy4zMzQuMDAxLTUuNzE1LTUuMzgyLTEwLjM2My0xMS45OTktMTAuMzYzem03LjUwNCAxNi41NThjLTIuNDU0IDIuMTA2LTUuOTY1IDMuMDQ5LTkuMzg4IDIuNTI0LS40NzktLjA3Ny0yLjU5MiAxLjc3My00LjMxMiAyLjk3MS4xOTQtLjczNS41NzQtMS45NzIuOTQzLTMuMzUzLjA5LS4zMzYtLjA2My0uNjktLjM3LS44NTQtNC41MjctMi40MzEtNS4zNjItNi4zOTYtNC42MzMtOS4yOTcuODg0LTMuNTA4IDQuMzk3LTcuMDQ5IDEwLjI1Ni03LjA0OSA1Ljc5IDAgMTAuNSAzLjk3NiAxMC41IDguODYyIDAgMi4zMzgtMS4wNjQgNC41MzgtMi45OTYgNi4xOTZ6Ii8+PHBhdGggZD0ibTYuNSA3Ljc1aC0zYy0uOTkyIDAtLjk5MyAxLjUgMCAxLjVoLjc1djQuMjVjMCAuOTkyIDEuNS45OTMgMS41IDB2LTQuMjVoLjc1Yy45OTIgMCAuOTkzLTEuNSAwLTEuNXoiLz48cGF0aCBkPSJtMTAuMTk2IDguMjIyYy0uMDAxLS4wMDMtLjAwNC0uMDA0LS4wMDUtLjAwNy0uMjQ2LS41OTUtMS4xMjYtLjYyMy0xLjM4MyAwLS4wMDEuMDAyLS4wMDMuMDA0LS4wMDQuMDA3bC0yIDVjLS4xNTQuMzg0LjAzMy44MjEuNDE4Ljk3NS45NTguMzg2IDEuMTI5LS45NzEgMS4zODYtMS40NDZoMS43ODVsLjQxMSAxLjAyOGMuMzY3LjkyIDEuNzY0LjM2NyAxLjM5My0uNTU3em0tLjk4OCAzLjAyOC4yOTItLjczMS4yOTIuNzMxeiIvPjxwYXRoIGQ9Im0xNS41IDEyLjc1aC0xLjI1di00LjI1YzAtLjk5Mi0xLjUtLjk5My0xLjUgMHY1YzAgLjQxNC4zMzYuNzUuNzUuNzVoMmMuOTkyIDAgLjk5My0xLjUgMC0xLjV6Ii8+PHBhdGggZD0ibTE4LjI1IDkuNjg5di0xLjE4OWMwLS45OTItMS41LS45OTMtMS41IDB2NWMwIC45OTIgMS41Ljk5MyAxLjUgMHYtMS40NjljMS42MDUgMS43NDYgMS42NTcgMi4yMTkgMi4yNSAyLjIxOS42MyAwIC45OTEtLjc0Ny41NjktMS4yMzlsLTEuODU3LTIuMTYzIDEuODIzLTEuODIzYy4wMDItLjAwMy4wMDUtLjAwNS4wMDctLjAwOC4wMDEtLjAwMS4wMDItLjAwMi4wMDMtLjAwMy42ODEtLjcwNi0uMzczLTEuNzQ3LTEuMDctMS4wNXoiLz48L3N2Zz4="
+                                                                     width="25px" hight="25px"></a></li>
+                <li><a th:href="@{/oauth2/authorization/facebook}"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a th:href="@{/oauth2/authorization/google}"><i class="fab fa-google"></i></a></li>
+            </div>
+            <div class="login_id">
+                <h4>ID</h4>
+                <input type="email" name="email" placeholder="email" autofocus required>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <input type="password" name="pw" placeholder="Password" required>
+            </div>
+            <div class="submit">
+                <input type="submit" value="submit">
+            </div>
+        </form>
+    </div>
+    <div id="join">
+        <form id="frm" th:action="@{/user/join}" method="post" onsubmit="return frmChk();">
+            <h1>Join</h1>
+            <div class="section">
+                <div>ID</div>
+                <input type="email" name="email" placeholder="email" required>
+                <button id="idCheckBtn" type="button">Check</button>
+            </div>
+            <div class="section">
+                <div>Password</div>
+                <input type="password" name="pw"  placeholder="Password" required>
+            </div>
+            <div class="section">
+                <div>Password Check</div>
+                <input type="password" id="chkUpw" placeholder="Password" required>
+            </div>
+            <div class="section">
+                <div>Name</div>
+                <input type="text" name="nm" placeholder="Name" required>
+            </div>
+            <div class="section">
+                <div>Tel</div>
+                <input type="tel" name="tel" placeholder="xxx-xxxx-xxxx" required>
+            </div>
+            <button id="joinBtn">
+                JOIN US!
+            </button>
+        </form>
+    </div>
+
+</div>
+
 
 <header th:fragment="header">
     <div id="top" >

@@ -11,7 +11,7 @@
 
     <select id="selBoardRsad" resultType="BoardDomain">
         <include refid="list"/>
-        WHERE A.rsad = #{rsad} LIKE CONCAT('대구광역시 ', #{rsad}, '%')
+        WHERE A.rsad LIKE CONCAT('대구광역시 ', #{rsad}, '%')
     </select>
 
     <select id="selBoardRsc" resultType="BoardDomain">
