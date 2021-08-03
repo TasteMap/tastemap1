@@ -36,9 +36,9 @@
 
     <!-- //////////////////////////// cmt ///////////////////////-->
     <select id="selCmtList" resultType="CmtDomain">
-        SELECT A.*, B.nm as writer
+        SELECT A.*, B.nm as writer, B.profileImg
         FROM t_matzip_cmt A
-                 INNER JOIN t_user B
+        INNER JOIN t_user B
                             ON A.iuser = B.iuser
         WHERE iboard = #{iboard}
         ORDER BY A.icmt

@@ -1,14 +1,12 @@
 package com.daedong.tastemap.user;
 
 import com.daedong.tastemap.board.model.BoardDomain;
-import com.daedong.tastemap.board.model.FavEntity;
 import com.daedong.tastemap.board.model.RsvDTO;
 import com.daedong.tastemap.common.EmailService;
 import com.daedong.tastemap.common.MySecurityUtils;
 import com.daedong.tastemap.security.IAuthenticationFacade;
-import com.daedong.tastemap.security.model.UserDetailsServiceImpl;
+import com.daedong.tastemap.security.UserDetailsServiceImpl;
 import com.daedong.tastemap.user.model.UserEntity;
-import org.apache.catalina.User;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

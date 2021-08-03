@@ -18,7 +18,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetails;
-    @Autowired private CustomOAuth2UserService customOauth2UserService;
+    @Autowired
+    private CustomOAuth2UserService customOauth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -42,12 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/home")
                 .usernameParameter("email")
                 .passwordParameter("pw")
+                .failureUrl("/home") // 로그인 실패시 redirect
                 .defaultSuccessUrl("/home");//로그인 성공하면 여기로감
 
         http.oauth2Login()
                 .loginPage("/home")
                 .defaultSuccessUrl("/home")
-                .failureUrl("/home")
                 .userInfoEndpoint() //OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당합니다.
                 .userService(customOauth2UserService);
 

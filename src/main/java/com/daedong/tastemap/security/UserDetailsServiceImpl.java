@@ -1,4 +1,4 @@
-package com.daedong.tastemap.security.model;
+package com.daedong.tastemap.security;
 
 import com.daedong.tastemap.security.model.CustomUserPrincipal;
 import com.daedong.tastemap.user.UserMapper;
@@ -34,7 +34,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return mapper.join(param);
     }
-
 
 
 //    @Override

@@ -161,18 +161,18 @@ function makeCmtElemList(data){
 
     var tableElem = document.createElement('table');
     var trElemTitle = document.createElement('tr');
-    var thElemCtnt = document.createElement('th');
     var thElemWriter = document.createElement('th');
+    var thElemCtnt = document.createElement('th');
     var thElemRegdate = document.createElement('th');
     var thElemBigo = document.createElement('th');
 
-    thElemCtnt.innerText = '내용';
     thElemWriter.innerText = '작성자';
+    thElemCtnt.innerText = '내용';
     thElemRegdate.innerText = '작성일';
     thElemBigo.innerText = '비고';
 
-    trElemTitle.append(thElemCtnt);
     trElemTitle.append(thElemWriter);
+    trElemTitle.append(thElemCtnt);
     trElemTitle.append(thElemRegdate);
     trElemTitle.append(thElemBigo);
 
@@ -183,13 +183,20 @@ function makeCmtElemList(data){
 
     data.forEach(function(item){
         var trElemCtnt = document.createElement('tr');
+        var tdElemImg = document.createElement('img');
         var tdElem1 = document.createElement('td');
         var tdElem2 = document.createElement('td');
         var tdElem3 = document.createElement('td');
         var tdElem4 = document.createElement('td');
 
-        tdElem1.append(item.cmt);
-        tdElem2.append(item.writer);
+        tdElemImg.setAttribute('src', `/pic/${item.iuser}/${item.profileImg}`);
+        if(item.profileImg == null){
+            tdElemImg.setAttribute('src', `/img/noprofile.jpg`);
+        }
+        tdElemImg.className = 'tdimg';
+        tdElem1.append(tdElemImg);
+        tdElem1.append(item.writer);
+        tdElem2.append(item.cmt);
         tdElem3.append(item.regdate);
         //일단 버튼은 스킵!
         if(parseInt(loginUserPk) === item.iuser){
