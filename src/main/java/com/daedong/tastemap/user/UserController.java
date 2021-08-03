@@ -48,23 +48,29 @@ public class UserController {
     }
 
     @GetMapping("/mypage")
-    public String mypage(UserEntity param, BoardDomain boardDomain, RsvDTO rsvDTO) {return "user/mypage";}
-
-    @RequestMapping("/mypage/{iuser}/rsv")
-    public String rsvList(RsvDTO rsvDTO, @PathVariable int iuser, Model model){
+    public String mypage(@RequestParam(value="iuser") int iuser, Model model, UserEntity userEntity, BoardDomain boardDomain, RsvDTO rsvDTO) {
         UserEntity param = new UserEntity();
         param.setIuser(iuser);
         model.addAttribute("rsvDTO", service.selRsvList(param));
-        return "redirect:/user/mypage?iuser=" + rsvDTO.getIuser();
+        model.addAttribute("boardDomain", service.selFavList(param));
+        return "user/mypage";
     }
 
-    @RequestMapping("/mypage/{iuser}/fav")
-    public String favList(BoardDomain boardDomain, @PathVariable int iuser, Model model){
-        UserEntity param = new UserEntity();
-        param.setIuser(iuser);
-        model.addAttribute("boardDomain", service.selFavList(param));
-        return "redirect:/user/mypage?iuser=" + boardDomain.getIuser();
-    }
+//    @RequestMapping("/mypage/{iuser}/rsv")
+//    public String rsvList(RsvDTO rsvDTO, @PathVariable int iuser, Model model){
+//        UserEntity param = new UserEntity();
+//        param.setIuser(iuser);
+//        model.addAttribute("rsvDTO", service.selRsvList(param));
+//        return "redirect:/user/mypage?iuser=" + rsvDTO.getIuser();
+//    }
+//
+//    @RequestMapping("/mypage/{iuser}/fav")
+//    public String favList(BoardDomain boardDomain, @PathVariable int iuser, Model model){
+//        UserEntity param = new UserEntity();
+//        param.setIuser(iuser);
+//        model.addAttribute("boardDomain", service.selFavList(param));
+//        return "redirect:/user/mypage?iuser=" + boardDomain.getIuser();
+//    }
 
     @PostMapping("/mypage")
     public String profile(MultipartFile img){

@@ -28,6 +28,10 @@ body{
     width: 100%;
 }
 
+div{
+    gap:5%;
+}
+
 img {
     border-radius: 50%;
     width: 400px;
@@ -47,6 +51,7 @@ table{
     height: 60%;
 }
 #favWrap{
+    font-family: 'twayair';
     float: left;
     width: 40%;
     height: 70%;
@@ -59,6 +64,7 @@ table{
     height: 20px;
 }
 #rsvWrap {
+    font-family: 'twayair';
     float: right;
     width: 40%;
     height: 70%;
