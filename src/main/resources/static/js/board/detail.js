@@ -95,30 +95,205 @@ function toggleFav(toggle) {
 
 getFavAjax();
 
+//코멘트
 
-//
-// const favCntSpan = document.createElement('span');
-// favCntSpan.innerText = item.favCnt;
-// favIcon.addEventListener('click', ()=> {
-//     item.isFav = 1 - item.isFav;
-//     fetch(`fav?iboard=${item.iboard}&type=${item.isFav}`)
-//         .then(res => res.json())
-//         .then(myJson => {
-//             if(myJson === 1) {
-//                 switch (item.isFav) {
-//                     case 0: //O > X
-//                         favIcon.classList.remove('fas');
-//                         favIcon.classList.add('far');
-//                         favCntSpan.innerText--;
-//                         break;
-//                     case 1: //X > O
-//                         favIcon.classList.remove('far');
-//                         favIcon.classList.add('fas');
-//                         favCntSpan.innerText++;
-//                         break;
-//                 }
-//             }
-//         });
-// });
-// favDiv.append(favIcon);
-// favDiv.append(favCntSpan);
+let cmtFrmElem = document.querySelector('#cmtFrm');
+let cmtListElem = document.querySelector('#cmtList');
+let cmtModModalElem = document.querySelector('#modal');
+
+
+function regCmt(){
+    let cmtVal = cmtFrmElem.cmt.value;
+    let param = {
+        iboard: cmtListElem.dataset.iboard,
+        cmt : cmtVal
+    };
+
+    regAjax(param);
+}
+
+function regAjax(param){
+    const init = {
+        method: 'POST',
+        body: JSON.stringify(param),
+        headers:{
+            'accept' : 'application/json',
+            'content-type' : 'application/json;charset=UTF-8'
+        }
+    };
+
+    fetch('cmt', init)
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(myJson){
+            console.log(myJson);
+
+            switch(myJson.result){
+                case 0: //등록실패
+                    alert('등록 실패!');
+                    break;
+                case 1: //등록성공
+                    cmtFrmElem.cmt.value = '';
+                    getListAjax();
+                    break;
+            }
+        });
+}
+
+function getListAjax(){
+    var iboard = cmtListElem.dataset.iboard;
+
+    fetch('cmt/' + iboard)
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(myJson){
+            console.log(myJson);
+
+            makeCmtElemList(myJson);
+        });
+}
+
+function makeCmtElemList(data){
+    //var cmtListElem = document.querySelector('#cmtList');
+    cmtListElem.innerHTML = ''; // 여기서 innertext줘도 되고 이거 줘도 됨
+
+    var tableElem = document.createElement('table');
+    var trElemTitle = document.createElement('tr');
+    var thElemCtnt = document.createElement('th');
+    var thElemWriter = document.createElement('th');
+    var thElemRegdate = document.createElement('th');
+    var thElemBigo = document.createElement('th');
+
+    thElemCtnt.innerText = '내용';
+    thElemWriter.innerText = '작성자';
+    thElemRegdate.innerText = '작성일';
+    thElemBigo.innerText = '비고';
+
+    trElemTitle.append(thElemCtnt);
+    trElemTitle.append(thElemWriter);
+    trElemTitle.append(thElemRegdate);
+    trElemTitle.append(thElemBigo);
+
+    tableElem.append(trElemTitle);
+    cmtListElem.append(tableElem);
+
+    var loginUserPk = cmtListElem.dataset.loginUserPk;
+
+    data.forEach(function(item){
+        var trElemCtnt = document.createElement('tr');
+        var tdElem1 = document.createElement('td');
+        var tdElem2 = document.createElement('td');
+        var tdElem3 = document.createElement('td');
+        var tdElem4 = document.createElement('td');
+
+        tdElem1.append(item.cmt);
+        tdElem2.append(item.writer);
+        tdElem3.append(item.regdate);
+        //일단 버튼은 스킵!
+        if(parseInt(loginUserPk) === item.iuser){
+            var delBtn = document.createElement('button');
+            var modBtn = document.createElement('button');
+
+            //삭제버튼 클릭시
+            delBtn.addEventListener('click', function() {
+                if(confirm('삭제하시겠습니까?')){
+                    delAjax(item.icmt);
+                }
+            });
+
+            //수정버튼 클릭시
+            modBtn.addEventListener('click', function(){
+                //댓글 수정 모달창 띄우기
+                openModModal(item);
+            });
+
+
+            delBtn.innerText = '삭제';
+            modBtn.innerText = '수정'; // modBtn.value는 안됨!
+
+            tdElem4.append(delBtn);
+            tdElem4.append(modBtn);
+        }
+
+        trElemCtnt.append(tdElem1);
+        trElemCtnt.append(tdElem2);
+        trElemCtnt.append(tdElem3);
+        trElemCtnt.append(tdElem4);
+
+        tableElem.append(trElemCtnt);
+    })
+}
+
+function delAjax(icmt){
+    fetch('cmt/' + icmt, {method: 'DELETE'})
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(data){ // ->여기 data자체가 {result: 0} ->여기에 접근한다 그래서
+            // 삭제가 잘됐으면 여기에 1이 넘어올꺼고 안됐으면 0이 넘어옴
+            console.log(data);
+
+            switch(data.result){
+                case 0:
+                    alert('댓글 삭제를 실패하였습니다.');
+                    break;
+                case 1:
+                    getListAjax();
+                    break;
+            }
+        });
+}
+
+function modAjax(){
+    var cmtModFrmElem = document.querySelector('#cmtModFrm');
+    var param = {
+        icmt: cmtModFrmElem.icmt.value,
+        cmt: cmtModFrmElem.modCmt.value
+    }
+
+    const init = {
+        method: 'PUT',
+        body: JSON.stringify(param),
+        headers:{
+            'accept' : 'application/json',
+            'content-type' : 'application/json;charset=UTF-8'
+        }
+    };
+
+    fetch('cmt', init)
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(myJson){
+
+            closeModModal();
+            switch(myJson.result){
+                case 0:
+                    alert('댓글수정을 실패하였습니다.');
+                    break;
+                case 1:
+                    getListAjax();
+                    break;
+            }
+        });
+
+}
+
+function openModModal({icmt, cmt}){
+    cmtModModalElem.className = '';
+
+    var cmtModFrmElem = document.querySelector('#cmtModFrm');
+    cmtModFrmElem.icmt.value = icmt;
+    cmtModFrmElem.modCmt.value = cmt;
+}
+
+function closeModModal(){
+
+    cmtModModalElem.className = 'displayNone';
+}
+
+getListAjax();
+
+

@@ -38,9 +38,10 @@
     <select id="selCmtList" resultType="CmtDomain">
         SELECT A.*, B.nm as writer
         FROM t_matzip_cmt A
-        INNER JOIN t_user B
-        ON A.iuser = B.iuser
+                 INNER JOIN t_user B
+                            ON A.iuser = B.iuser
         WHERE iboard = #{iboard}
+        ORDER BY A.icmt
     </select>
 
     <insert id="insCmt">
@@ -51,9 +52,21 @@
     </insert>
 
     <delete id="delCmt">
-        delete from cmt_table
-        where iuser=${iuser} and icmt=${icmt}
+        delete from t_matzip_cmt
+        where
+        <if test="iboard > 0">
+            iboard=#{iboard}
+        </if>
+        <if test="icmt > 0">
+            iuser = #{iuser} AND icmt = #{icmt}
+        </if>
     </delete>
+
+    <update id="updCmt">
+        UPDATE t_matzip_cmt
+        SET cmt = #{cmt}
+        WHERE icmt = #{icmt} AND iuser = #{iuser}
+    </update>
 
     <!--///////////////fav/////////////////-->
     <insert id="insFav">

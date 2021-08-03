@@ -78,14 +78,45 @@ public class BoardController {
         model.addAttribute("boardEntity", service.selBoard(iboard));
         return "board/detail";
     }
+    @ResponseBody
+    @RequestMapping(value= "/cmt", method = RequestMethod.POST)
+    public Map<String, Integer> cmtIns(@RequestBody CmtEntity param){
+        System.out.println("param = " + param);
+        int result = service.insCmt(param);
+        Map<String, Integer> data = new HashMap<>();
+        data.put("result", result);
+        return data;
+    }
 
-    @PostMapping("/cmt")
-    public CmtEntity insCmt(CmtEntity param){
-        return service.insCmt();}
+    @ResponseBody
+    @RequestMapping("/cmt/{iboard}")
+    public List<CmtDomain> cmtSel(@PathVariable("iboard") int iboard){
+        CmtEntity param = new CmtEntity();
+        param.setIboard(iboard);
+        System.out.println("param=" + param);
+        return service.selCmtList(param);
+    }
 
-    @GetMapping("/cmt")
-    public List<CmtDomain> cmtList(CmtEntity param){
-        return service.selCmtList();
+
+    @ResponseBody
+    @RequestMapping(value = "/cmt/{icmt}", method = RequestMethod.DELETE)
+    public Map<String, Integer> cmtDel(CmtEntity param, @PathVariable int icmt){
+        param.setIcmt(icmt);
+        int result = service.delCmt(param);
+        Map<String, Integer> data = new HashMap<>();
+        data.put("result", result);
+        return data;
+
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value="/cmt", method = RequestMethod.PUT)
+    public Map<String, Integer> cmtUpd(@RequestBody CmtEntity param){
+        int result = service.updCmt(param);
+        Map<String, Integer> data = new HashMap<>();
+        data.put("result", result);
+        return data;
     }
 
 //    @GetMapping("/rsv")

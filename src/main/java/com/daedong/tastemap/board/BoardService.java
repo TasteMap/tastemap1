@@ -26,12 +26,23 @@ public class BoardService {
         return mapper.selBoard(iboard);
     }
 
-    public CmtEntity insCmt() {
-        return mapper.insCmt();
+    public int insCmt(CmtEntity param){
+        param.setIuser(auth.getLoginUserPk());
+        return mapper.insCmt(param);
     }
 
-    public List<CmtDomain> selCmtList() {
-        return mapper.selCmtList();
+    public List<CmtDomain> selCmtList(CmtEntity param) {
+        return mapper.selCmtList(param);
+    }
+
+    public int delCmt(CmtEntity param){
+        param.setIuser(auth.getLoginUserPk());
+        return mapper.delCmt(param);
+    }
+
+    public int updCmt(CmtEntity param){
+        param.setIuser(auth.getLoginUserPk());
+        return mapper.updCmt(param);
     }
 
     public int insRsv(RsvEntity param) {

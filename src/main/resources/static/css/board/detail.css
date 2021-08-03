@@ -23,7 +23,7 @@ section{
     width: 100%;
     height: calc(100% - 100px);
     /*margin: 20px auto 0 auto;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
     grid-template-columns: 0.5fr;
 }
 
@@ -59,4 +59,25 @@ section{
 .text{
     background-color: cadetblue;
     height: 15%;
+}
+
+/*코멘트*/
+.displayNone { display: none !important; }
+
+#modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal .modal_content{
+    background: white;
+    border: 1px solid #95a5a6;
+    padding: 20px;
 }

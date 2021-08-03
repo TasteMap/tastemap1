@@ -2,7 +2,7 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="basicLayout">
+      layout:decorator="basicLayout" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block layout:fragment="css">
     <link rel="stylesheet" th:href="@{/css/board/detail.css}">
@@ -32,11 +32,25 @@
                 <input type="hidden" name="iuser" th:value="${auth.iuser}">
                 <input type="submit" value="예약하기">
             </form>
-
-            <div id="rv">content</div>
-            <div class="text">
-                <input type="text" placeholder="후기를 작성해주세요.">
-                <input type="button" value="작성">
+        </div>
+        <div id="rv">content</div>
+        <div>
+            <form id="cmtFrm" onsubmit="return false;">
+                <input type="text" id="cmt" placeholder="후기를 작성해주세요.">
+                <input type="button" value="작성" onclick="regCmt();">
+            </form>
+        </div>
+        <div id="cmtList" sec:authorize="isAuthenticated()"
+             th:attr="data-login-user-pk=${auth.iuser}, data-iboard=${boardEntity.iboard}"></div>
+        <div></div>
+        <div id="modal" class="displayNone">
+            <div class="modal_content">
+                <form id="cmtModFrm" action="#">
+                    <input type="hidden" id="icmt">
+                    <input type="text" id="modCmt">
+                </form>
+                <input type="button" value="댓글수정" onclick="modAjax()">
+                <input type="button" value="취소" onclick="closeModModal();">
             </div>
         </div>
     </section>

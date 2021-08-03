@@ -11,5 +11,11 @@ public class HomeController {
     public String home(UserEntity param){
         return "main/home";
     }
+
+    @GetMapping("/")
+    public String home_1(UserEntity param){
+        return "main/home";
+    }
+
 }
 
