@@ -1,20 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@font-face {/*티웨이하늘-제목*/
-    font-family: 'twaysky';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {/*티웨이항공-내용*/
-    font-family: 'twayair';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 li{list-style: none;}
 a{text-decoration: none;}
 
 section{
+    font-family: 'twayair' !important;
     position: relative;
     top: 80px;
     display: grid;
@@ -61,24 +49,30 @@ section{
     height: 15%;
 }
 
+input::placeholder { font-family: 'twayair'; }
+
 /*코멘트*/
 .displayNone { display: none !important; }
 
 #modal {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    width: 25%;
+    height: 30%;
+    /*padding-bottom: 100px;*/
+    border-radius: 5%;
+    background-color: rgb(238, 230, 211);
+    margin: 0 auto;
+    z-index: 9999;
+}
+
+#modCmt {
+    margin-top: 30px;
+    width: 50%;
 }
 
 #modal .modal_content{
-    background: white;
-    border: 1px solid #95a5a6;
     padding: 20px;
 }
 

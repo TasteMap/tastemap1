@@ -19,18 +19,24 @@
 
 <th:block layout:fragment="content">
 
-    <section th:with="auth=${#authentication.getPrincipal().getUser()}">
+    <section >
         <div id="res">
             <div class="title" th:text="${boardEntity.rsnm}"><span>음식점:</span></div>
             <div class="rsad" th:text="${boardEntity.rsad}">주소:</div>
             <div id="map" style="width:100%;height:400px;"></div>
             <div class="fav" th:text="${boardDomain.favCnt}">좋아요 수:</div>
+
             <form id="rsv" method="post" th:action="@{/board/rsv}" th:object="${rsvEntity}">
                 인원 수 : <input type="number" min="1" max="5" th:field="*{memberct}">
                 <input type="text" id="datepicker" th:field="*{dt}">
                 <input type="hidden" name="iboard" th:value="${boardEntity.iboard}">
-                <input type="hidden" name="iuser" th:value="${auth.iuser}">
-                <input type="submit" value="예약하기">
+                <th:block sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
+                    <input type="hidden" name="iuser" th:value="${auth.iuser}">
+                    <input type="submit" value="예약하기">
+                </th:block>
+                <th:block th:if="${#authorization.expression('isAnonymous()')}">
+                    <input type="submit" value="예약하기" onclick="alert('로그인이 필요합니다.');">
+                </th:block>
             </form>
         </div>
         <div>
@@ -39,9 +45,9 @@
                 <input type="button" value="작성" onclick="regCmt();">
             </form>
         </div>
-        <div id="cmtList" sec:authorize="isAuthenticated()"
-             th:attr="data-login-user-pk=${auth.iuser}, data-iboard=${boardEntity.iboard}"></div>
-        <div></div>
+        <th:block sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
+            <div id="cmtList" th:attr="data-login-user-pk=${auth.iuser}, data-iboard=${boardEntity.iboard}"></div>
+        </th:block>
         <div id="modal" class="displayNone">
             <div class="modal_content">
                 <form id="cmtModFrm" action="#">

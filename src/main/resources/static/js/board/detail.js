@@ -297,10 +297,7 @@ function openModModal({icmt, cmt}){
 }
 
 function closeModModal(){
-
     cmtModModalElem.className = 'displayNone';
 }
 
 getListAjax();
-
-
