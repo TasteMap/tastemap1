@@ -108,7 +108,10 @@ function regCmt(){
         iboard: cmtListElem.dataset.iboard,
         cmt : cmtVal
     };
-
+    if(cmtVal == ''){
+        alert('내용을 작성해주세요')
+        return;
+    }
     regAjax(param);
 }
 

@@ -44,7 +44,12 @@
                 <div>
                     <form id="cmtFrm" onsubmit="return false;">
                         <input type="text" id="cmt" placeholder="후기를 작성해주세요.">
-                        <input type="button" id="cmtbtn" value="작성" onclick="regCmt();">
+                        <th:block sec:authorize="isAuthenticated()">
+                            <input type="button" id="cmtbtn" value="작성" onclick="regCmt();">
+                        </th:block>
+                        <th:block th:if="${#authorization.expression('isAnonymous()')}">
+                            <input type="button" value="작성" onclick="alert('로그인이 필요합니다.');">
+                        </th:block>
                     </form>
                 </div>
 
@@ -55,12 +60,12 @@
 
                 <div id="modal" class="displayNone">
                     <div class="modal_content">
-                        <form id="cmtModFrm" action="#">
+                        <form id="cmtModFrm" onsubmit="return false;">
                             <input type="hidden" id="icmt">
                             <input type="text" id="modCmt">
+                            <input type="button" value="댓글수정" onclick="modAjax()">
+                            <input type="button" value="취소" onclick="closeModModal();">
                         </form>
-                        <input type="button" value="댓글수정" onclick="modAjax()">
-                        <input type="button" value="취소" onclick="closeModModal();">
                     </div>
                 </div>
 
