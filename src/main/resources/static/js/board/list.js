@@ -1,7 +1,7 @@
 function moveToDetail(iboard){
     location.href = '/board/detail?iboard=' + iboard;
 };
-
+//https://www.daleseo.com/js-window-fetch/
 //좋아요 영역
 let favElem = document.querySelector('.fav');
 let favIconElem = document.querySelectorAll('.favIcon');
