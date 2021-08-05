@@ -4,29 +4,20 @@ function moveToDetail(iboard){
 
 //좋아요 영역
 let favElem = document.querySelector('.fav');
-let favIconElem = document.querySelector('#favIcon');
-function event1(iboard){
-    console.log('dd');
-    if(favIconElem.classList.contains('far')) { // X > O
-        insFavAjax(iboard);
+let favIconElem = document.querySelectorAll('.favIcon');
 
+function event1(iboard, index){
+    console.log(index);
+    console.log(typeof index);
+    if(favIconElem[index].classList.contains('far')) { // X > O
+        insFavAjax(iboard, index);
     } else { // O > X
-        delFavAjax(iboard);
+        delFavAjax(iboard, index);
     }
 }
-// favIconElem.addEventListener('click', function() {
-//     console.log('dd');
-//     if(favIconElem.classList.contains('far')) { // X > O
-//         insFavAjax();
-//
-//     } else { // O > X
-//         delFavAjax();
-//     }
-// });
 
-function insFavAjax(iboard) {
-
-    const param = {iboard};
+function insFavAjax(iboard1, index) {
+    const param = {iboard: iboard1};
     console.log(param);
     const init = {
         method: 'POST',
@@ -43,7 +34,7 @@ function insFavAjax(iboard) {
         .then(function (myJson) {
             console.log(myJson);
             if(myJson === 1) {
-                toggleFav(1);
+                toggleFav(1, index);
             }else{
                 alert('실패');
             }
@@ -51,32 +42,33 @@ function insFavAjax(iboard) {
 }
 
 //좋아요 취소
-function delFavAjax(iboard1) {
+function delFavAjax(iboard1, index) {
     const init = {
         method: 'DELETE'
     }
     const iboard = iboard1;
 
-    fetch('fav?iboard=' + iboard, init)
+    fetch('fav?iboard=' + iboard1, init)
         .then(function(res) {
             return res.json();
         })
         .then(function (myJson) {
             if(myJson.result === 1) {
-                toggleFav(0);
+                toggleFav(0, index);
             }
         })
 }
 
-function toggleFav(toggle) {
+function toggleFav(toggle, index) {
+    console.log(favIconElem[index]);
     switch(toggle) {
         case 0: //좋아요 X
-            favIconElem.classList.remove('fas');
-            favIconElem.classList.add('far');
+            favIconElem[index].classList.remove('fas');
+            favIconElem[index].classList.add('far');
             break;
         case 1: //좋아요 O
-            favIconElem.classList.remove('far');
-            favIconElem.classList.add('fas');
+            favIconElem[index].classList.remove('far');
+            favIconElem[index].classList.add('fas');
             break;
     }
 }

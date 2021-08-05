@@ -152,12 +152,14 @@ public class BoardController {
     @ResponseBody
     @PostMapping("/fav")
     public int insFav(@RequestBody FavEntity favEntity) {
+        System.out.println(favEntity.getIboard());
         return service.insFav(favEntity);
     }
 
     @ResponseBody
     @DeleteMapping("/fav")
     public String delFav(FavEntity favEntity, Model model) {
+        System.out.println(favEntity.getIboard());
         model.addAttribute("favEntity", service.delFav(favEntity));
         return "board/list";
     }
