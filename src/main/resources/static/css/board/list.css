@@ -11,9 +11,10 @@
     font-weight: normal;
     font-style: normal;
 }
+
 #dropbox_menu{
     position: fixed;
-    top: 50px;
+    top: 70px;
     width: 30%;}
 .nav{
     flex-direction: row;
@@ -23,7 +24,7 @@
     overflow:hidden;
 }
 .nav a{
-    font-family: 'twayair';
+    font-family: "twayair";
     color: aliceblue;
     font-size: 1.2rem;
     display: flex;
@@ -73,13 +74,14 @@
     height:320px;
 }
 .nav>li:last-child:hover .submenu{
-    height:280px;
+    height:100px;
 }
 
 #dropbox_menu div {
     box-shadow: inherit;
     margin: 0;
     padding: 0;
+    font-size: 1rem;
 }
 section{
     padding-top: 80px;
@@ -98,38 +100,38 @@ section{
     /*grid-template-rows: 0.5fr 0.5fr;*/
     width: 100%;
     height: 50px;
-    background-color: tomato;
+    background-color: #f9eca0;
+    border: 0.5px #f9eca0 solid;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+}
+#list{
+    display: grid;
+    grid-template-columns: 1.1fr 0.1fr;
+}
+.title{
+    padding-top: 5px;
+    font-family: 'twayair';
+    text-align: center;
+    font-size: 2rem;
+    color: #ff9856;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+.title:hover{
+    color: tomato;
 }
 .fav{
-    width: 50%;
+    padding-top: 15px;
+    padding-right: 20px;
+    color: salmon;
+    width: 100%;
     height: 20px;
 }
 .fav #favIcon{
     float: right;
 }
 .fav:hover{
-    color: chartreuse;
+    color: tomato;
 }
-/*.img{*/
-/*    grid-row: 1 / 3;*/
-/*    grid-column: 1 / 2;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background-image: url("https://avatars.githubusercontent.com/u/87254668?v=4");*/
-/*    background-size: cover;*/
-/*}*/
-.title{
-    padding-top: 5px;
-    font-family: 'twayair';
-    text-align: center;
-    font-size: 2rem;
-    color: #f0c911;
-    width: auto;
-}
-.title:hover{
-    color: #b6fd99;
-}
-/*.menu{*/
-/*    background-color: lavenderblush;*/
-/*    width: auto;*/
-/*}*/

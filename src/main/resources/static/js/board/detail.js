@@ -160,6 +160,7 @@ function makeCmtElemList(data){
     cmtListElem.innerHTML = ''; // 여기서 innertext줘도 되고 이거 줘도 됨
 
     var tableElem = document.createElement('table');
+    tableElem.classList.add('table');
     var trElemTitle = document.createElement('tr');
     var thElemWriter = document.createElement('th');
     var thElemCtnt = document.createElement('th');

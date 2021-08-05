@@ -19,43 +19,51 @@
 
 <th:block layout:fragment="content">
 
-    <section >
-        <div id="res">
-            <div class="title" th:text="${boardEntity.rsnm}"><span>음식점:</span></div>
-            <div class="rsad" th:text="${boardEntity.rsad}">주소:</div>
-            <div id="map" style="width:100%;height:400px;"></div>
-            <div class="fav" th:text="${boardDomain.favCnt}">좋아요 수:</div>
+    <section>
+        <div id="wrap">
+            <div id="res">
+                <div class="title" th:text="${boardEntity.rsnm}"><span>음식점:</span></div>
+                <div class="rsad" th:text="${boardEntity.rsad}">주소:</div>
+                <div id="map" style="width:100%;height:300px;"></div>
+                <div id="line">
+                    <div class="fav"><span th:text="${boardDomain.favCnt}"></span>명이 좋아해요!</div>
+                    <form id="rsv" method="post" th:action="@{/board/rsv}" th:object="${rsvEntity}">
+                        인원 수 : <input type="number" min="1" max="5" th:field="*{memberct}">
+                        <input type="text" id="datepicker" th:field="*{dt}">
+                        <input type="hidden" name="iboard" th:value="${boardEntity.iboard}">
+                        <th:block sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
+                            <input type="hidden" name="iuser" th:value="${auth.iuser}">
+                            <input type="submit" id="rsvbtn" value="예약하기">
+                        </th:block>
+                        <th:block th:if="${#authorization.expression('isAnonymous()')}">
+                            <input type="submit" value="예약하기" onclick="alert('로그인이 필요합니다.');">
+                        </th:block>
+                    </form>
+                </div>
+                <!--코멘트-->
+                <div>
+                    <form id="cmtFrm" onsubmit="return false;">
+                        <input type="text" id="cmt" placeholder="후기를 작성해주세요.">
+                        <input type="button" id="cmtbtn" value="작성" onclick="regCmt();">
+                    </form>
+                </div>
 
-            <form id="rsv" method="post" th:action="@{/board/rsv}" th:object="${rsvEntity}">
-                인원 수 : <input type="number" min="1" max="5" th:field="*{memberct}">
-                <input type="text" id="datepicker" th:field="*{dt}">
-                <input type="hidden" name="iboard" th:value="${boardEntity.iboard}">
                 <th:block sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
-                    <input type="hidden" name="iuser" th:value="${auth.iuser}">
-                    <input type="submit" value="예약하기">
+                    <div id="cmtList" style="width: 100%; height: 25%; overflow-y: scroll;"
+                         th:attr="data-login-user-pk=${auth.iuser}, data-iboard=${boardEntity.iboard}"></div>
                 </th:block>
-                <th:block th:if="${#authorization.expression('isAnonymous()')}">
-                    <input type="submit" value="예약하기" onclick="alert('로그인이 필요합니다.');">
-                </th:block>
-            </form>
-        </div>
-        <div>
-            <form id="cmtFrm" onsubmit="return false;">
-                <input type="text" id="cmt" placeholder="후기를 작성해주세요.">
-                <input type="button" value="작성" onclick="regCmt();">
-            </form>
-        </div>
-        <th:block sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}">
-            <div id="cmtList" th:attr="data-login-user-pk=${auth.iuser}, data-iboard=${boardEntity.iboard}"></div>
-        </th:block>
-        <div id="modal" class="displayNone">
-            <div class="modal_content">
-                <form id="cmtModFrm" action="#">
-                    <input type="hidden" id="icmt">
-                    <input type="text" id="modCmt">
-                </form>
-                <input type="button" value="댓글수정" onclick="modAjax()">
-                <input type="button" value="취소" onclick="closeModModal();">
+
+                <div id="modal" class="displayNone">
+                    <div class="modal_content">
+                        <form id="cmtModFrm" action="#">
+                            <input type="hidden" id="icmt">
+                            <input type="text" id="modCmt">
+                        </form>
+                        <input type="button" value="댓글수정" onclick="modAjax()">
+                        <input type="button" value="취소" onclick="closeModModal();">
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
