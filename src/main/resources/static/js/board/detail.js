@@ -65,6 +65,7 @@ geocoder.addressSearch(address, function(result, status) {
     }
 });
 
+
 //좋아요 여부 값 가져오기
 
 var favCntElem = document.querySelector(".fav");
@@ -107,7 +108,6 @@ function regCmt(){
         iboard: cmtListElem.dataset.iboard,
         cmt : cmtVal
     };
-
     if(cmtVal == ''){
         alert('내용을 작성해주세요')
         return;
