@@ -59,13 +59,13 @@ function event1(iboard, index) {
     }
 
 //좋아요 여부 값 가져오기
-    function getFavAjax(iboard , index) {
+    function getFavAjax(toggle , index) {
         fetch('/board/fav?iboard=' + iboard)
             .then(function (res) {
                 return res.json();
             })
             .then(function (myJson) {
-                toggleFav(favIconElem[index]);
+                toggleFav(toggle, index);
             });
     }
 

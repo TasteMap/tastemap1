@@ -15,10 +15,10 @@
 
 <th:block layout:fragment="content" th:with="profile=${#authentication.getPrincipal().getUser()}">
   <section>
-
+  <div id="wrap">
     <div id="up">
-    <form th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
-      <div>
+    <form id="upForm" th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
+      <div class="img">
         <th:block th:if="${profile.profileImg == null}">
           <img th:src="@{/img/noprofile.jpg}">
         </th:block>
@@ -27,8 +27,8 @@
         </th:block>
       </div>
       <div class="upload">
-        이미지 : <input type="file" id="img" name="img" multiple accept="image/*">
-        <input type="submit" value="업로드">
+        이미지 : <input type="file" id="img" name="img" multiple accept="image/*"><input type="submit" value="업로드">
+
       </div>
     </form>
     <div id="table">
@@ -54,18 +54,23 @@
     </div>
 
   <div id="btm">
-    <div id="favWrap" style="width: 100%; height: 25%; overflow-y: scroll;">
-      <div class="favItem" th:each="item : ${boardDomain}">
+    <div id="favWrap" style="overflow-y: scroll;">
+      <div class="favItem"><h3>내가 좋아한 식당</h3>
+        <span th:each="item : ${boardDomain}">
         <div class="rsnm" th:text="${item.rsnm}"></div>
+        </span>
       </div>
     </div>
-    <div id="rsvWrap" style="width: 100%; height: 25%; overflow-y: scroll;">
-      <div class="rsvItem" th:each="item : ${rsvDTO}">
-        <div class="date" th:text="${item.dt}"></div>
+    <div id="rsvWrap" style="overflow-y: scroll;">
+      <div class="rsvItem"><h3>내가 예약한 식당</h3>
+        <span th:each="item : ${rsvDTO}">
+      <div class="date" th:text="${item.dt}"></div>
         <div class="memberct" th:text="${item.memberct}"></div>
         <div class="rsnm" th:text="${item.rsnm}"></div>
+        </span>
       </div>
     </div>
+  </div>
   </div>
   </section>
 </th:block>
