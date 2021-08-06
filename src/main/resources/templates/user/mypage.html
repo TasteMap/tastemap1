@@ -14,7 +14,9 @@
 </th:block>
 
 <th:block layout:fragment="content" th:with="profile=${#authentication.getPrincipal().getUser()}">
-  <div id="flexContainer">
+  <section>
+
+    <div id="up">
     <form th:action="@{/user/mypage}" method="post" enctype="multipart/form-data" onsubmit= "return imgsubmit();">
       <div>
         <th:block th:if="${profile.profileImg == null}">
@@ -29,6 +31,7 @@
         <input type="submit" value="업로드">
       </div>
     </form>
+    <div id="table">
     <table>
       <tr>
         <th>email</th>
@@ -47,14 +50,16 @@
         <td th:text="${profile.regdt}"></td>
       </tr>
     </table>
-  </div>
+    </div>
+    </div>
+
   <div id="btm">
-    <div id="favWrap">
+    <div id="favWrap" style="width: 100%; height: 25%; overflow-y: scroll;">
       <div class="favItem" th:each="item : ${boardDomain}">
         <div class="rsnm" th:text="${item.rsnm}"></div>
+      </div>
     </div>
-    </div>
-    <div id="rsvWrap">
+    <div id="rsvWrap" style="width: 100%; height: 25%; overflow-y: scroll;">
       <div class="rsvItem" th:each="item : ${rsvDTO}">
         <div class="date" th:text="${item.dt}"></div>
         <div class="memberct" th:text="${item.memberct}"></div>
@@ -62,5 +67,6 @@
       </div>
     </div>
   </div>
+  </section>
 </th:block>
 </html>

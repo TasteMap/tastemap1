@@ -12,7 +12,6 @@
 
     <th:block layout:fragment="js">
         <script defer th:src="@{/js/board/list.js}"></script>
-        <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
     </th:block>
 
     <th:block layout:fragment="content">
@@ -59,11 +58,11 @@
             </header>
         <section>
             <div class="content" th:each="item, index : ${list}">
-                <div id="list">
+                <div class="list">
                     <div class="title" th:onclick="|moveToDetail(${item.iboard})|">
                         <span th:text="${item.rsnm}"></span>
                     </div>
-                    <div class="fav" sec:authorize="isAuthenticated()">
+                    <div class="favContainer" sec:authorize="isAuthenticated()">
                         <i th:onclick="|event1(${item.iboard}, ${index.index})|" class="far fa-heart favIcon"></i>
                     </div>
                 </div>

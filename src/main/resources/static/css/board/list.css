@@ -105,7 +105,7 @@ section{
     border-radius: 20px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
 }
-#list{
+.list{
     display: grid;
     grid-template-columns: 1.1fr 0.1fr;
 }
@@ -122,16 +122,17 @@ section{
 .title:hover{
     color: tomato;
 }
-.fav{
+
+.favContainer{
     padding-top: 15px;
     padding-right: 20px;
-    color: salmon;
     width: 100%;
-    height: 20px;
+    height: 100%;
 }
-.fav #favIcon{
+.favIcon{
+    color: salmon;
     float: right;
 }
-.fav:hover{
+.favIcon:hover{
     color: tomato;
 }

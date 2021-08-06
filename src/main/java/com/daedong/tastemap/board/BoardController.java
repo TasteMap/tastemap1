@@ -133,22 +133,6 @@ public class BoardController {
         return "redirect:/board/detail?iboard=" + rsvEntity.getIboard();
     }
 
-//    @GetMapping("/fav/{iboard}")
-//    public String selFav(@PathVariable int iboard, Model model) {
-//        BoardDomain param = new BoardDomain();
-//        param.setIboard(iboard);
-//        model.addAttribute("boardDomain", service.selFav(param));
-//        return "board/detail";
-//    }
-
-//    @ResponseBody
-//    @GetMapping("/fav")
-//    public int feedFavProc(FavEntity param, int type) { //type: 1 - ins(등록), 0 - del(취소)
-//        System.out.println(param);
-//        System.out.println("type: " + type);
-//        return service.feedFavProc(param, type);
-//    }
-
     @ResponseBody
     @PostMapping("/fav")
     public int insFav(@RequestBody FavEntity favEntity) {
@@ -158,9 +142,8 @@ public class BoardController {
 
     @ResponseBody
     @DeleteMapping("/fav")
-    public String delFav(FavEntity favEntity, Model model) {
+    public int delFav(FavEntity favEntity, Model model) {
         System.out.println(favEntity.getIboard());
-        model.addAttribute("favEntity", service.delFav(favEntity));
-        return "board/list";
+        return service.delFav(favEntity);
     }
 }
