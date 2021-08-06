@@ -32,21 +32,21 @@
       </div>
     </form>
     <div id="table">
-    <table>
+    <table id="favTable">
       <tr>
-        <th>email</th>
+        <th>이메일</th>
         <td th:text="${profile.email}"></td>
       </tr>
       <tr>
-        <th>name</th>
+        <th>이름</th>
         <td th:text="${profile.nm}"></td>
       </tr>
       <tr>
-        <th>tel</th>
+        <th>전화 번호</th>
         <td th:text="${profile.tel}"></td>
       </tr>
       <tr>
-        <th>reg date</th>
+        <th>가입 날짜</th>
         <td th:text="${profile.regdt}"></td>
       </tr>
     </table>
@@ -64,9 +64,20 @@
     <div id="rsvWrap" style="overflow-y: scroll;">
       <div class="rsvItem"><h3>내가 예약한 식당</h3>
         <span th:each="item : ${rsvDTO}">
-      <div class="date" th:text="${item.dt}"></div>
-        <div class="memberct" th:text="${item.memberct}"></div>
-        <div class="rsnm" th:text="${item.rsnm}"></div>
+           <table id="rsvTable">
+            <tr>
+              <th class="rsvTh">날짜</th>
+              <td class="rsvTd" th:text="${item.dt}"></td>
+            </tr>
+            <tr>
+              <th class="rsvTh">인원</th>
+              <td class="rsvTd" th:text="${item.memberct}"></td>
+            </tr>
+            <tr>
+              <th class="rsvTh">식당</th>
+              <td class="rsvTd" th:text="${item.rsnm}"></td>
+            </tr>
+           </table>
         </span>
       </div>
     </div>

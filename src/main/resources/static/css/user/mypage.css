@@ -89,6 +89,7 @@ img{
     margin: 0 auto;
     text-align: left;
 }
+
 #btm{
     padding-top: 50px;
     display: grid;
@@ -106,13 +107,17 @@ img{
 }
 #favWrap::-webkit-scrollbar{ display:none;}
 .favItem{
-    padding-top: 10px;
     text-align: center;
     width: 100%;
 }
 .favItem > div {
     height: 20px;
 }
+.rsnm{
+    border : 1px solid #e3d06f;
+    border-collapse: collapse;
+}
+
 #rsvWrap {
     font-family: 'twayair';
     width: 55%;
@@ -121,14 +126,25 @@ img{
     -ms-overflow-style: none;
 }
 #rsvWrap::-webkit-scrollbar{ display:none; }
+
+#rsvTable, .rsvTh, .rsvTd{
+    border : 1px solid #e3d06f;
+    border-collapse: collapse;
+}
+.rsvTh{
+    width: 30%;
+    background-color: #f5efd9;
+}
+
 .rsvItem {
-    padding-top: 10px;
     text-align: center;
     width: 100%;
 }
 .rsvItem > div {
     height: 20px;
+    background-color: antiquewhite;
 }
 h3{
+    background-color: #f5efd9;
     border-bottom: 3px solid #f9eca0;
 }
