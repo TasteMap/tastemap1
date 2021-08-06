@@ -1,5 +1,3 @@
-
-
 /*오늘뭐먹지 & 타이틀 이미지*/
 #title_back{
     position: relative;
@@ -389,8 +387,3 @@ footer{
 #btm p{
     flex-direction: column;
 }
-
-
-
-
-
