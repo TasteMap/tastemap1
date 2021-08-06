@@ -44,11 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("pw")
                 .failureUrl("/home") // 로그인 실패시 redirect
-                .defaultSuccessUrl("/home");//로그인 성공하면 여기로감
+                .defaultSuccessUrl("/home", true);//로그인 성공하면 여기로감
 
         http.oauth2Login()
                 .loginPage("/home")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/home", true)
                 .userInfoEndpoint() //OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당합니다.
                 .userService(customOauth2UserService);
 
@@ -63,4 +63,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
     }
 }
-
