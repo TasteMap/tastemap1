@@ -75,4 +75,8 @@ public class BoardService {
         param.setIuser(auth.getLoginUserPk());
         return mapper.delFav(param);
     }
+
+    public int getFav(FavEntity param){
+        return mapper.getFav(param);
+    }
 }

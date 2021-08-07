@@ -63,7 +63,10 @@
                         <span th:text="${item.rsnm}"></span>
                     </div>
                     <div class="favContainer" sec:authorize="isAuthenticated()">
-                        <i th:onclick="|event1(${item.iboard}, ${index.index})|" class="far fa-heart favIcon"></i>
+                        <i class="fa-heart favIcon"
+                           th:onclick="|event1(${item.iboard}, ${index.index})|"
+                           th:classappend="${item.isFav} != 0 ? 'fas' : 'far'">
+                        </i>
                     </div>
                 </div>
             </div>

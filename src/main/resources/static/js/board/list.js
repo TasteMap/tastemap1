@@ -13,9 +13,9 @@ function event1(iboard, index) {
     } else { // O > X
         delFavAjax(iboard, index);
     }
+}
 
-
-    function insFavAjax(iboard1, index) {
+            function insFavAjax(iboard1, index) {
         const param = {iboard: iboard1};
         console.log(param);
         const init = {
@@ -26,7 +26,7 @@ function event1(iboard, index) {
                 'content-type': 'application/json;charset=UTF-8'
             }
         };
-        fetch('/board/fav?iboard', init)
+        fetch('/board/fav?iboard='+iboard1, init)
             .then(function (res) {
                 return res.json();
             })
@@ -59,15 +59,16 @@ function event1(iboard, index) {
     }
 
 //좋아요 여부 값 가져오기
-    function getFavAjax(toggle , index) {
-        fetch('/board/fav?iboard=' + iboard)
-            .then(function (res) {
-                return res.json();
-            })
-            .then(function (myJson) {
-                toggleFav(toggle, index);
-            });
-    }
+//     function getFavAjax(index) {
+//         var iboard=document.querySelector('#iconIboard').dataset.iboard
+//         console.log(iboard)
+//         fetch(`/board/fav?iboard=${iboard}`)
+//             .then(res => res.json())
+//             .then(function (myJson) {
+//                 console.log("myJson:"+myJson);
+//                 toggleFav(myJson, index);
+//             });
+//     }
 
     function toggleFav(toggle, index) {
         console.log(favIconElem[index]);
@@ -75,15 +76,18 @@ function event1(iboard, index) {
         const elem = favIconElem[index]
         switch (toggle) {
             case 0: //좋아요 X
-                elem.classList.remove('fas');
-                elem.classList.add('far');
+                // elem.classList.remove('fas');
+                // elem.classList.add('far');
+                elem.addClass('far');
+                elem.removeClass('fas');
                 break;
             case 1: //좋아요 O
-                elem.classList.remove('far');
-                elem.classList.add('fas');
+                // elem.classList.remove('far');
+                // elem.classList.add('fas');
+                elem.addClass('fas');
+                elem.removeClass('far');
                 break;
         }
     }
 
-    getFavAjax();
-}
+// getFavAjax();

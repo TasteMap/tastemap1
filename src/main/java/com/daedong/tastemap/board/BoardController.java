@@ -1,8 +1,10 @@
 package com.daedong.tastemap.board;
 
 import com.daedong.tastemap.board.model.*;
+import com.daedong.tastemap.security.model.CustomUserPrincipal;
 import com.daedong.tastemap.user.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +20,17 @@ public class BoardController {
     @Autowired private BoardService service;
 
     @GetMapping("/list")
-    public String list(@RequestParam(value="rs") String rs, Model model) {
+    public String list(@RequestParam(value="rs") String rs, @AuthenticationPrincipal CustomUserPrincipal userDetail, Model model) {
 
         BoardDomain param = new BoardDomain();
+        param.setIuser(userDetail.getUser().getIuser());
+
         List<BoardDomain> list = null;
         System.out.println("rs : " + rs);
 
         if (rs.equals("0") || rs.equals("1") || rs.equals("2") || rs.equals("3") || rs.equals("4") || rs.equals("5") || rs.equals("6") || rs.equals("7") ) {
             System.out.println("rsad 작동");
             System.out.println(rs);
-//            if (rs.equals("0")) { param.setRsad("중구"); }
-//            else if (rs.equals("1")) { param.setRsad("수성구"); }
-//            else if (rs.equals("2")) { param.setRsad("동구"); }
-//            else if (rs.equals("3")) { param.setRsad("서구"); }
-//            else if (rs.equals("4")) { param.setRsad("남구"); }
-//            else if (rs.equals("5")) { param.setRsad("북구"); }
-//            else if (rs.equals("6")) { param.setRsad("달서구"); }
-//            else if (rs.equals("7")) { param.setRsad("달성군"); }
             System.out.println(param);
             switch (rs) {
                 case "0": param.setRsad("중구"); break;
@@ -74,7 +70,6 @@ public class BoardController {
         BoardDomain param = new BoardDomain();
         param.setIboard(iboard);
         model.addAttribute("boardDomain", service.selFav(param));
-
         model.addAttribute("boardEntity", service.selBoard(iboard));
         return "board/detail";
     }
@@ -135,15 +130,24 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/fav")
-    public int insFav(@RequestBody FavEntity favEntity) {
+    public int insFav(@RequestParam(value="iboard") int iboard, FavEntity favEntity) {
         System.out.println(favEntity.getIboard());
         return service.insFav(favEntity);
     }
 
     @ResponseBody
     @DeleteMapping("/fav")
-    public int delFav(FavEntity favEntity, Model model) {
+    public int delFav(@RequestParam(value="iboard") int iboard, FavEntity favEntity) {
         System.out.println(favEntity.getIboard());
         return service.delFav(favEntity);
+    }
+
+    @ResponseBody
+    @GetMapping("/fav")
+    public int getFav(@RequestParam(value="iboard") FavEntity favEntity, @AuthenticationPrincipal CustomUserPrincipal userDetail) {
+        System.out.println(favEntity.getIboard());
+        favEntity.setIuser(userDetail.getUser().getIuser());
+        System.out.println("asdasd"+service.getFav(favEntity));
+        return service.getFav(favEntity);
     }
 }

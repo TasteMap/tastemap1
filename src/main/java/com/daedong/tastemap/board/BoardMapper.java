@@ -24,5 +24,6 @@ public interface BoardMapper {
     int insFav(FavEntity param);
     BoardDomain selFav(BoardDomain param);
     int delFav(FavEntity param);
+    int getFav(FavEntity param);
 
 }

@@ -4,9 +4,16 @@
 
 <mapper namespace="com.daedong.tastemap.board.BoardMapper">
     <sql id="list">
-        SELECT A.rsnm, A.iboard, A.rsad
-             ,(SELECT count(*) from t_matzip_fav where iboard=#{iboard} and iuser = #{iuser}) as isFav
+        SELECT A.rsnm, A.iboard, A.rsad, IFNULL(D.iuser,0) AS isFav
         FROM t_matzip A
+        LEFT JOIN (
+            SELECT B.iuser, B.iboard
+            FROM t_matzip_fav B
+            INNER JOIN t_matzip C
+            ON B.iboard = C.iboard
+            WHERE B.iuser = #{iuser}
+        ) D
+        ON A.iboard = D.iboard
     </sql>
 
     <select id="selBoardRsad" resultType="BoardDomain">
@@ -16,7 +23,7 @@
 
     <select id="selBoardRsc" resultType="BoardDomain">
         <include refid="list"/>
-        WHERE A.rsc = #{rsc}
+        and A.rsc = #{rsc}
     </select>
 
     <!-- ////////////// DETAIL ///////////////-->
@@ -66,7 +73,21 @@
         INSERT INTO t_matzip_fav(iboard, iuser)
         VALUES(#{iboard}, #{iuser})
     </insert>
+    <select id="selFav" resultType="BoardDomain">
+        SELECT count(*) as favCnt
+        FROM t_matzip_fav
+        WHERE iboard = #{iboard}
+    </select>
 
+    <select id="getFav" resultType="FavEntity">
+        SELECT count(iboard) from t_matzip_fav
+        WHERE iboard = #{iboard} AND iuser=#{iuser}
+    </select>
+
+    <delete id="delFav">
+        DELETE FROM t_matzip_fav
+        WHERE iboard=#{iboard} AND iuser=#{iuser}
+    </delete>
 <!--    <select id="selFav" resultType="BoardDomain">-->
 <!--    SELECT A.iboard, A.rsnm, A.rsc, A.rsad, IFNULL(B.iboard,0) AS isFav,-->
 <!--    CASE WHEN A.rsad !=null THEN A.rsad = #{rsad}-->
@@ -91,23 +112,7 @@
 <!--        </set>-->
 <!--    </select>-->
 
-    <select id="selFav" resultType="BoardDomain">
-        SELECT count(*) as favCnt
-        FROM t_matzip_fav
-        WHERE iboard = #{iboard}
-    </select>
 
-<!--    <select id="selFavList" resultType="BoardDomain">-->
-<!--        SELECT B.rsnm-->
-<!--        FROM t_matzip_fav A-->
-<!--        INNER JOIN t_matzip B-->
-<!--        ON A.iboard = B.iboard-->
-<!--        WHERE A.iuser = #{iuser}-->
-<!--    </select>-->
-    <delete id="delFav">
-        DELETE FROM t_matzip_fav
-        WHERE iboard=#{iboard} AND iuser=#{iuser}
-    </delete>
 
     <!--/////////////////rsv///////////////////-->
     <insert id="insRsv">
